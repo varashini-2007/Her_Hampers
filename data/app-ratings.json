@@ -1,0 +1,117 @@
+[
+  {
+    "id": "app-rat-01",
+    "orderId": "HH-10492",
+    "customerName": "Aadhya Sharma",
+    "rating": 5,
+    "ratingText": "5 of 5 - Loved it! ⭐⭐⭐⭐⭐",
+    "tags": [
+      "🌸 Easy to Order",
+      "⚡ Smooth UPI",
+      "🎁 Lovely Packaging",
+      "✨ Beautiful Items"
+    ],
+    "comment": "The ordering experience was so smooth and joyful! Instant UPI verification and gorgeous aesthetic design.",
+    "date": "2026-10-02 14:35:10"
+  },
+  {
+    "id": "app-rat-02",
+    "orderId": "HH-79027",
+    "customerName": "amirtha",
+    "rating": 5,
+    "ratingText": "5 of 5 - Loved it! ⭐⭐⭐⭐⭐",
+    "tags": [
+      "⚡ Smooth UPI",
+      "✨ Beautiful Items",
+      "🚀 Fast Delivery"
+    ],
+    "comment": "Super fast checkout with UPI scanner. The live order tracking made it so stress-free!",
+    "date": "2026-10-05 22:55:00"
+  },
+  {
+    "id": "app-rat-03",
+    "orderId": "HH-10495",
+    "customerName": "Kavya Menon",
+    "rating": 5,
+    "ratingText": "5 of 5 - Loved it! ⭐⭐⭐⭐⭐",
+    "tags": [
+      "🌸 Easy to Order",
+      "🎁 Lovely Packaging",
+      "📱 Great App Design"
+    ],
+    "comment": "Love the custom hamper builder and product photo gallery! Felt like stepping into a boutique.",
+    "date": "2026-10-06 18:20:45"
+  },
+  {
+    "rating": 5,
+    "ratingText": "5 of 5",
+    "tags": [
+      "Smooth Checkout",
+      "Lovely Packaging"
+    ],
+    "comment": "Super fast delivery and adorable pink hamper! 5 of 5 stars!",
+    "orderId": "TEST-ORD-999",
+    "userName": "Priya Sundaram",
+    "date": "2026-10-07T08:51:05.492Z"
+  },
+  {
+    "rating": 5,
+    "ratingText": "5 of 5",
+    "tags": [
+      "Smooth Checkout",
+      "Lovely Packaging"
+    ],
+    "comment": "Super fast delivery and adorable pink hamper! 5 of 5 stars!",
+    "orderId": "TEST-ORD-999",
+    "userName": "Priya Sundaram",
+    "date": "2026-10-07T10:51:34.148Z"
+  },
+  {
+    "rating": 5,
+    "ratingText": "5 of 5",
+    "tags": [
+      "Smooth Checkout",
+      "Lovely Packaging"
+    ],
+    "comment": "Super fast delivery and adorable pink hamper! 5 of 5 stars!",
+    "orderId": "TEST-ORD-999",
+    "userName": "Priya Sundaram",
+    "date": "2026-10-14T04:19:35.658Z"
+  },
+  {
+    "rating": 5,
+    "ratingText": "5 of 5",
+    "tags": [
+      "Smooth Checkout",
+      "Lovely Packaging"
+    ],
+    "comment": "Super fast delivery and adorable pink hamper! 5 of 5 stars!",
+    "orderId": "TEST-ORD-999",
+    "userName": "Priya Sundaram",
+    "date": "2026-10-14T04:34:36.351Z"
+  },
+  {
+    "rating": 5,
+    "ratingText": "5 of 5",
+    "tags": [
+      "Smooth Checkout",
+      "Lovely Packaging"
+    ],
+    "comment": "Super fast delivery and adorable pink hamper! 5 of 5 stars!",
+    "orderId": "TEST-ORD-999",
+    "userName": "Priya Sundaram",
+    "date": "2026-10-14T05:16:20.033Z"
+  },
+  {
+    "rating": 5,
+    "ratingText": "5 of 5",
+    "tags": [
+      "Smooth Checkout",
+      "Lovely Packaging"
+    ],
+    "comment": "Super fast delivery and adorable pink hamper! 5 of 5 stars!",
+    "orderId": "TEST-ORD-999",
+    "userName": "Priya Sundaram",
+    "date": "2026-10-14T06:34:48.250Z"
+  }
+]

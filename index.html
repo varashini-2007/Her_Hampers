@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Her Hampers | Luxury Handcrafted Hampers, Jewelry & Aesthetic Accessories</title>
+  <meta name="description" content="Discover Her Hampers - Aesthetic pastel pink boutique for handcrafted luxury gift hampers, clips, scrunchies, chains, jimmikis, kolusu, evil eye anklets, rings, glass & raindrop bangles.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Floating Toast Notifications -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Frozen Site Header (Announcement Ticker + Navbar) -->
+  <header class="site-header-frozen" id="siteHeader">
+    <!-- Top Announcement Bar with Continuous Moving Words -->
+    <div class="announcement-bar">
+      <div class="announcement-marquee-track">
+        <span class="announcement-item">🌸 <strong>Welcome to Her Hampers:</strong> Luxury Handcrafted Accessories &amp; Bespoke Gift Boxes</span>
+        <span class="announcement-item">🏷️ Use Code <strong style="background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 4px; text-decoration: underline;">WELCOME10</strong> for 10% OFF Your First Order!</span>
+        <span class="announcement-item">🚚 Express Shipping: <strong>Tamil Nadu ₹70 | Rest of India ₹100</strong></span>
+        <span class="announcement-item">💖 Complimentary Double-Satin Ribbon Wrap &amp; Handwritten Calligraphy Card</span>
+        <span class="announcement-item">✨ 100% Anti-Tarnish Premium Jewelry &amp; Melodic Kolusu</span>
+        <!-- Seamless loop duplicate -->
+        <span class="announcement-item">🌸 <strong>Welcome to Her Hampers:</strong> Luxury Handcrafted Accessories &amp; Bespoke Gift Boxes</span>
+        <span class="announcement-item">🏷️ Use Code <strong style="background: rgba(255,255,255,0.25); padding: 1px 6px; border-radius: 4px; text-decoration: underline;">WELCOME10</strong> for 10% OFF Your First Order!</span>
+        <span class="announcement-item">🚚 Express Shipping: <strong>Tamil Nadu ₹70 | Rest of India ₹100</strong></span>
+        <span class="announcement-item">💖 Complimentary Double-Satin Ribbon Wrap &amp; Handwritten Calligraphy Card</span>
+        <span class="announcement-item">✨ 100% Anti-Tarnish Premium Jewelry &amp; Melodic Kolusu</span>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="mainNavbar">
+      <div class="container nav-container">
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-logo" id="brandLogo" title="Her Hampers - Handcrafted with Love">
+          <div class="brand-logo-emblem">
+            <div class="brand-logo-aura"></div>
+            <img src="assets/images/logo.png" alt="Her Hampers Logo" class="brand-logo-img">
+          </div>
+          <div class="brand-text">
+            <h1>Her Hampers</h1>
+            <p>Made With Love</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <div class="nav-links-wrap">
+          <ul class="nav-links">
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#shop">Shop All</a></li>
+            <li><a href="#builder">Build Hamper</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="javascript:void(0)" onclick="openTrackOrderModal()" class="nav-track-link">Track Order</a></li>
+          </ul>
+        </div>
+
+        <!-- Nav Actions -->
+        <div class="nav-actions">
+          <!-- Live Search Bar -->
+          <div class="search-bar-wrap">
+            <span class="search-icon">
+              <svg class="icon-svg sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search clips, kolusu, rings..." aria-label="Search products">
+          </div>
+
+          <!-- Track Order Nav Button -->
+          <button id="trackOrderNavBtn" class="btn-icon-pill" onclick="openTrackOrderModal()" title="Track My Order" aria-label="Track Order">
+            <span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            </span>
+          </button>
+
+          <!-- Wishlist Button -->
+          <button id="wishlistToggleBtn" class="btn-icon-pill" title="View Wishlist" aria-label="Wishlist">
+            <span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </span>
+            <span id="wishlistCount" class="badge-count" style="display:none;">0</span>
+          </button>
+
+          <!-- Shopping Cart Drawer Trigger -->
+          <button id="cartDrawerBtn" class="btn-icon-pill" onclick="openCartDrawer()" title="Shopping Cart" aria-label="Cart">
+            <span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </span>
+            <span id="cartCount" class="badge-count">0</span>
+          </button>
+
+          <!-- Host Admin Gate Button -->
+          <button id="hostAdminGateBtn" class="btn-host-gate" title="Host Administrator Access">
+            <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Host Portal</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content scroll-reveal">
+          <div class="hero-tag">
+            <span>Aesthetic Accessories & Luxury Gifting</span>
+          </div>
+          <h2 class="hero-title cute-hero-title">
+            Curated with Elegance, <br>Wrapped in <span class="highlight cute-highlight">Pink & Love 💖</span>
+          </h2>
+          <p class="hero-desc">
+            Explore our dreamy collection of handcrafted clips, silk scrunchies, delicate chains, authentic jimmikis, melodic kolusu, evil eye protection anklets, couple rings, salon-gloss nail polish, and mesmerizing raindrop bangles.
+          </p>
+          <div class="hero-ctas">
+            <a href="#shop" class="btn-primary">
+              <span>Explore Collection</span>
+            </a>
+            <a href="#builder" class="btn-secondary">
+              <span>Curate Custom Hamper</span>
+            </a>
+          </div>
+
+          <!-- Trust Perks -->
+          <div class="trust-perks">
+            <div class="perk-item">
+              <div class="perk-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+              </div>
+              <span>Complimentary Gift Packaging</span>
+            </div>
+            <div class="perk-item">
+              <div class="perk-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="6 3 18 3 22 9 12 22 2 9"></polygon><polyline points="2 9 12 9 22 9"></polyline><polyline points="12 22 7 9 6 3"></polyline><polyline points="12 22 17 9 18 3"></polyline></svg>
+              </div>
+              <span>100% Anti-Tarnish & Premium Quality</span>
+            </div>
+            <div class="perk-item">
+              <div class="perk-icon">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <span>Custom Handwritten Calligraphy Note</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="hero-visual scroll-reveal">
+          <div class="hero-card-frame">
+            <img src="assets/images/hero.jpg" alt="Her Hampers Luxury Gift Box with scrunchies, pearl clips, jimmiki and bangles" id="heroImage">
+          </div>
+          <!-- Floating Badges -->
+          <div class="floating-glass-badge badge-1">
+            <div class="badge-icon">
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <div class="badge-text">
+              <p class="label">Customer Happiness</p>
+              <p class="val">4.9 / 5.0 Star Rating</p>
+            </div>
+          </div>
+          <div class="floating-glass-badge badge-2">
+            <div class="badge-icon">
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3.5L6 20l1.5-6.5L3 9l6-1z"></path></svg>
+            </div>
+            <div class="badge-text">
+              <p class="label">Custom Curations</p>
+              <p class="val">Over 2,500+ Hampers Gifted</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop & Products Section -->
+    <section class="container shop-section" id="shop">
+      <div class="section-header scroll-reveal">
+        <span class="section-subtitle">Our Dreamy Collection</span>
+        <h2 class="section-title">Handpicked Treasures for You & Yours</h2>
+        <p class="section-desc">From everyday aesthetic hair accents to heirloom traditional jewelry, discover everything you adore.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="category-filter-wrap">
+        <div class="category-scroll-container" id="categoryScroll">
+          <button class="cat-pill-btn active" data-category="all">All Items</button>
+          <button class="cat-pill-btn" data-category="boys accessories">Boys Accessories (Kaapu & Chains)</button>
+          <button class="cat-pill-btn" data-category="lighting toys">Lighting Toys</button>
+          <button class="cat-pill-btn" data-category="kids">Kids (Bubbles & Cars)</button>
+          <button class="cat-pill-btn" data-category="mehandhi">Mehandhi & Stickers</button>
+          <button class="cat-pill-btn" data-category="keychains">Camera & Keychains</button>
+          <button class="cat-pill-btn" data-category="clips">Clips</button>
+          <button class="cat-pill-btn" data-category="scrunchies">Scrunchies</button>
+          <button class="cat-pill-btn" data-category="chain">Chains</button>
+          <button class="cat-pill-btn" data-category="jimmiki">Jimmiki</button>
+          <button class="cat-pill-btn" data-category="cute earrings">Cute Earrings</button>
+          <button class="cat-pill-btn" data-category="kolusu">Kolusu</button>
+          <button class="cat-pill-btn" data-category="evil eye kolusu">Evil Eye Kolusu</button>
+          <button class="cat-pill-btn" data-category="ring for boys">Rings for Boys</button>
+          <button class="cat-pill-btn" data-category="ring for girls">Rings for Girls</button>
+          <button class="cat-pill-btn" data-category="nail polish">Nail Polish</button>
+          <button class="cat-pill-btn" data-category="glass bangles">Glass Bangles</button>
+          <button class="cat-pill-btn" data-category="raindrop bangles">Raindrop Bangles</button>
+          <button class="cat-pill-btn" data-category="hampers">Gift Hampers</button>
+        </div>
+      </div>
+
+      <!-- Product Controls Bar (Count & Sorting) -->
+      <div class="product-controls-bar">
+        <div class="results-info">
+          Showing <strong id="productCountDisplay">0</strong> products
+          <span id="activeFilterBadge" style="margin-left: 0.5rem; display:none;" class="product-badge pink"></span>
+        </div>
+        <div class="sort-wrap">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="featured">Featured Curations</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+            <option value="name">Alphabetical (A - Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Custom Hamper Builder Section -->
+    <section class="hamper-builder-section" id="builder">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-subtitle">Make It One of a Kind</span>
+          <h2 class="section-title">Build Your Custom Hamper Box</h2>
+          <p class="section-desc">Create an unforgettable gifting experience in 4 simple steps. Pick your box, select favorite items, add luxury extras, and write a heartfelt handwritten letter.</p>
+        </div>
+
+        <div class="builder-layout">
+          <!-- Steps Configuration Form -->
+          <div class="builder-steps-container">
+            
+            <!-- Step 1: Select Packaging Style (Corrugated Box, Ribbon Box, Acrylic Bag) -->
+            <div class="builder-step scroll-reveal">
+              <h3 class="step-title">
+                <span class="step-num">1</span>
+                <span>Select Your Hamper Packaging Style</span>
+              </h3>
+              <p style="font-size: 0.82rem; color: var(--pink-700); margin-bottom: 0.9rem; font-weight: 600;">
+                Choose between our eco-friendly corrugated mailer, luxury magnetic ribbon chest, or transparent acrylic tote:
+              </p>
+              <div class="box-options-grid" id="boxStylesGrid">
+                <!-- Dynamically populated from HAMPER_BOX_STYLES -->
+              </div>
+
+              <!-- Dynamic Size Selector (Small, Medium, Large for Corrugated and Ribbon Box) -->
+              <div id="boxSizeSelectionContainer" class="box-sizes-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.4rem;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: var(--pink-950);" id="boxSizeHeading">
+                    Select Box Size & Dimensions:
+                  </span>
+                  <span style="font-size: 0.74rem; color: var(--pink-700); font-weight: 600;" id="boxSizeSubnote"></span>
+                </div>
+                <div class="size-pills-row" id="boxSizePillsRow">
+                  <!-- Size pills or universal note populated dynamically -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Choose 3 to 10 Items to Fill the Box -->
+            <div class="builder-step scroll-reveal">
+              <div class="builder-step-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.6rem;">
+                <h3 class="step-title" style="margin-bottom: 0; display: inline-flex; align-items: center; gap: 0.6rem;">
+                  <span class="step-num">2</span>
+                  <span>Pick 3 to 10 Items to Fill Your Hamper</span>
+                </h3>
+                <span class="builder-count-pill" id="builderItemsCapBadge">0 / 10 items chosen (Pick at least 3 items)</span>
+              </div>
+              <p style="font-size: 0.82rem; color: var(--pink-700); margin-bottom: 0.7rem; font-weight: 600;">
+                Click any accessory below to pack it into your hamper. You can curate between 3 and 10 accessories:
+              </p>
+
+              <!-- Category Filter for Hamper Builder Items -->
+              <div class="builder-cat-pills" id="builderCatPills" style="display: flex; gap: 0.4rem; overflow-x: auto; padding-bottom: 0.6rem; margin-bottom: 0.9rem; scrollbar-width: thin;">
+                <button type="button" class="cat-pill-btn active" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('all', this)">All Items</button>
+                <button type="button" class="cat-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('boys accessories', this)">Boys Kaapu & Chains</button>
+                <button type="button" class="cat-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('kids', this)">Kids (Bubbles & Cars)</button>
+                <button type="button" class="cat-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('lighting toys', this)">Lighting Toys</button>
+                <button type="button" class="cat-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('mehandhi', this)">Mehandhi & Stickers</button>
+                <button type="button" class="cat-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('keychains', this)">Camera Keychains</button>
+                <button type="button" class="cat-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('jewelry', this)">Jewelry</button>
+                <button type="button" class="cat-pill-btn" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;" onclick="filterHamperItemsCategory('clips-scrunchies', this)">Clips & Scrunchies</button>
+              </div>
+              
+              <div class="builder-items-grid" id="builderItemsGrid">
+                <!-- Dynamically populated from products dataset where inHamperBuilder !== false -->
+              </div>
+
+              <!-- Boutique Custom Note: Products Not In Our Website -->
+              <div class="custom-products-note-card scroll-reveal">
+                <div class="note-card-badge">
+                  <span>🌸 Bespoke Boutique Note</span>
+                </div>
+                <h4 class="note-card-title">
+                  Want products not in our website?
+                </h4>
+                <p class="note-card-desc">
+                  Looking for a customized photo frame, personalized name keychain, specific chocolate brand, or special keepsake? 
+                  Simply <strong>text our WhatsApp number (99949 77734)</strong> or <strong>message us on Instagram (@her._hampers)</strong> with your reference photos and requests! Our boutique artisans will handcraft or source it for your hamper with love.
+                </p>
+                <div class="note-card-actions">
+                  <a href="https://wa.me/919994977734?text=Hi%20Her%20Hampers!%20I%20want%20products%20not%20in%20your%20website%20(photo%20frame%20/%20customized%20keychain%20/%20special%20item)%20for%20my%20hamper." target="_blank" rel="noopener noreferrer" class="btn-note-whatsapp">
+                    <svg class="icon-svg sm" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <span>Text to WhatsApp (99949 77734)</span>
+                  </a>
+                  <a href="https://www.instagram.com/her._hampers?stkn=eHprZjU3Y2FhOHdi" target="_blank" rel="noopener noreferrer" class="btn-note-instagram">
+                    <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <span>DM on Instagram (@her._hampers)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Add Chocolates & Fragrance Add-ons -->
+            <div class="builder-step scroll-reveal">
+              <h3 class="step-title">
+                <span class="step-num">3</span>
+                <span>Add Chocolates, Scented Candle & Fairy Lights</span>
+              </h3>
+              <p style="font-size: 0.82rem; color: var(--pink-700); margin-bottom: 0.8rem; font-weight: 600;">
+                Treat the recipient with local chocolates (Dairy Milk Silk, KitKat, 5 Star, Ferrero), warm fairy lights, and relaxing aromatherapy:
+              </p>
+              <div class="addons-list" id="builderAddonsList">
+                <!-- Populated dynamically from HAMPER_ADDONS -->
+              </div>
+            </div>
+
+            <!-- Step 4: Handwritten Calligraphy Note Typing Box -->
+            <div class="builder-step scroll-reveal">
+              <h3 class="step-title">
+                <span class="step-num">4</span>
+                <span>Personalized Gift Card & Heartfelt Message</span>
+              </h3>
+              <p style="font-size: 0.82rem; color: var(--pink-700); margin-bottom: 0.6rem; font-weight: 600;">
+                Type your personal message below. We will handwrite it with love on our gold-embossed botanical gift card:
+              </p>
+              <textarea id="hamperNoteInput" class="greeting-input" placeholder="Type your personal message here... (e.g. 'Happy Birthday to my favorite person in the world! Wishing you endless joy and sparkle. - With love, Sneha')" oninput="handleHamperNoteChange(this.value)"></textarea>
+            </div>
+
+          </div>
+
+          <!-- Sticky Live Box Preview & Add to Cart -->
+          <div class="builder-preview-sticky">
+            <div class="preview-badge-header">
+              <h3>Your Custom Hamper</h3>
+              <span class="product-badge pink" id="builderItemsCountBadge">3 / 10 items chosen</span>
+            </div>
+
+            <div class="preview-img-container" id="builderPreviewImgContainer">
+              <img id="builderPreviewImg" src="assets/images/box_corrugated.png" alt="Custom Hamper Packaging Preview">
+              <!-- Mini Cute Warm Fairy Lights Ambiance Overlay inside box -->
+              <div class="fairy-lights-box-overlay" id="fairyLightsBoxOverlay" style="display: none;">
+                <div class="box-ambient-warmth"></div>
+                <div class="box-light-dot ld-1">✨</div>
+                <div class="box-light-dot ld-2">💡</div>
+                <div class="box-light-dot ld-3">✨</div>
+                <div class="box-light-dot ld-4">💡</div>
+                <div class="box-light-dot ld-5">✨</div>
+                <div class="box-light-dot ld-6">💡</div>
+                <div class="fairy-lights-banner-tag">🌟 Fairy Lights Ambiance Active</div>
+              </div>
+            </div>
+
+            <div class="curated-items-summary" id="builderSummaryList">
+              <!-- Summary rows populated dynamically -->
+            </div>
+
+            <div class="summary-row total">
+              <span>Total Hamper Value:</span>
+              <span id="builderTotalDisplay">₹0</span>
+            </div>
+
+            <button id="addCustomHamperBtn" onclick="addCustomHamperToCart()" class="btn-add-hamper-cart" style="margin-top: 1.4rem;">
+              <span>Add Custom Hamper to Cart</span>
+            </button>
+            <p style="font-size: 0.76rem; color: var(--text-muted); text-align: center; margin-top: 0.6rem;">
+              Packed with hand-tied satin ribbon & complimentary gift card
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews / Testimonials -->
+    <section class="reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-subtitle">Loved by Thousands</span>
+          <h2 class="section-title">Sweet Words from Happy Hearts</h2>
+          <p class="section-desc">See why shoppers and gift-givers across India fall in love with Her Hampers curations.</p>
+        </div>
+
+        <div class="reviews-grid" id="reviewsContainer">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase Instagram Banner -->
+    <div class="container" style="margin-bottom: 2rem;">
+      <div class="showcase-banner scroll-reveal">
+        <h2>Unbox Pure Happiness with Her Hampers</h2>
+        <p>Follow our Instagram <strong style="color: white; text-decoration: underline;">@her._hampers</strong> and tag us with your opening videos and reviews to get a special gift! 🎁✨</p>
+        <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+          <a href="https://www.instagram.com/her._hampers?stkn=eHprZjU3Y2FhOHdi" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="background: white; border: none; color: var(--pink-700); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Follow @her._hampers on Instagram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="brand-logo-emblem" style="width: 48px; height: 48px;">
+              <div class="brand-logo-aura"></div>
+              <img src="assets/images/logo.png" alt="Her Hampers Logo" class="brand-logo-img" style="width: 44px; height: 44px;">
+            </div>
+            <div class="brand-text">
+              <h3 style="font-size: 1.4rem;">Her Hampers</h3>
+              <p>Made with Love</p>
+            </div>
+          </div>
+          <p>
+            Your ultimate destination for bespoke gift hampers, traditional silver kolusu, temple jimmikis, raindrop glass bangles, hair accessories, and personalized moments.
+          </p>
+          <div style="display: flex; gap: 0.8rem; color: var(--pink-600); margin-top: 0.8rem; align-items: center;">
+            <a href="https://www.instagram.com/her._hampers?stkn=eHprZjU3Y2FhOHdi" target="_blank" rel="noopener noreferrer" style="color: var(--pink-600); text-decoration: none;" title="Instagram @her._hampers">
+              <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://wa.me/919994977734" target="_blank" rel="noopener noreferrer" style="color: #25d366; text-decoration: none;" title="WhatsApp Support 99949 77734">
+              <svg class="icon-svg sm" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">+91 99949 77734</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#shop" onclick="selectCategory('clips')">Clips & Hair Barrettes</a></li>
+            <li><a href="#shop" onclick="selectCategory('scrunchies')">Silk Satin Scrunchies</a></li>
+            <li><a href="#shop" onclick="selectCategory('chain')">Layered Chains & Chokers</a></li>
+            <li><a href="#shop" onclick="selectCategory('jimmiki')">Traditional Temple Jimmiki</a></li>
+            <li><a href="#shop" onclick="selectCategory('kolusu')">Silver Ghungroo Kolusu</a></li>
+            <li><a href="#shop" onclick="selectCategory('evil eye kolusu')">Evil Eye Protection Kolusu</a></li>
+            <li><a href="#shop" onclick="selectCategory('raindrop bangles')">Raindrop Crystal Bangles</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#builder">Build Your Own Hamper</a></li>
+            <li><a href="javascript:void(0)" onclick="openTrackOrderModal()">Track Your Order</a></li>
+            <li><a href="https://wa.me/919994977734" target="_blank" rel="noopener noreferrer">WhatsApp Support: 99949 77734</a></li>
+            <li><a href="https://www.instagram.com/her._hampers?stkn=eHprZjU3Y2FhOHdi" target="_blank" rel="noopener noreferrer">Instagram: @her._hampers</a></li>
+            <li><a href="#contact">Shipping & Returns Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Host Administration</h4>
+          <p>Store owner & administrative management portal.</p>
+          <button id="footerHostBtn" class="btn-host-gate" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+            <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Host Administrator Login</span>
+          </button>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.6rem;">
+            Restricted access: Requires verified host username and password.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Her Hampers. All rights reserved. Designed with pink & white love.</div>
+        <div style="display: flex; gap: 1rem;">
+          <span>Secure 256-Bit SSL Checkout</span>
+          <span>•</span>
+          <span>Made in India</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button on Mobile -->
+  <button id="mobileBackToTopBtn" class="mobile-back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top" title="Back to top">
+    <svg class="icon-svg sm" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+
+  <!-- ========================================================
+       MODALS AND DRAWERS
+       ======================================================== -->
+
+  <!-- 1. Cart Drawer (Slide out & Fullscreen expandable) -->
+  <div id="cartDrawerBackdrop" class="cart-drawer-backdrop">
+    <aside class="cart-drawer" id="cartDrawerAside" aria-label="Shopping Cart Drawer">
+      <div class="cart-header">
+        <h3>
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <span>Your Hamper Cart (<span id="cartDrawerCount">0</span>)</span>
+        </h3>
+        <div class="cart-header-actions" style="display: flex; align-items: center; gap: 0.6rem;">
+          <button type="button" id="toggleCartFullscreenBtn" class="btn-cart-fullscreen" onclick="toggleCartFullscreen()" title="Toggle Fullscreen / Expanded View">
+            <span id="cartFsIcon">⛶</span>
+            <span id="cartFsLabel" style="font-size: 0.78rem; font-weight: 700;">Full Screen</span>
+          </button>
+          <button id="closeCartBtn" class="modal-close-btn" aria-label="Close cart">&times;</button>
+        </div>
+      </div>
+
+      <div class="cart-body" id="cartItemsList">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="cart-footer" id="cartFooterArea">
+        <div class="cart-totals">
+          <div class="cart-total-row">
+            <span>Subtotal:</span>
+            <span id="cartSubtotalDisplay">₹0</span>
+          </div>
+          <div class="cart-total-row" id="cartDiscountRow" style="display: none; color: #10b981;">
+            <span>Discount (<span id="appliedCouponLabel"></span>):</span>
+            <span id="cartDiscountDisplay">- ₹0</span>
+          </div>
+          <div class="cart-total-row" style="font-size: 0.82rem; color: var(--text-secondary);">
+            <span>Estimated Shipping:</span>
+            <span id="cartShippingDisplay" style="font-weight: 700; color: var(--pink-700); text-align: right;">Calculated at Checkout (TN: ₹70 / India: ₹100)</span>
+          </div>
+          <div class="cart-total-row final">
+            <span>Subtotal:</span>
+            <span id="cartTotalDisplay">₹0</span>
+          </div>
+        </div>
+
+        <button id="proceedToCheckoutBtn" class="btn-checkout">
+          <span>Proceed to Checkout</span>
+          <span>→</span>
+        </button>
+
+        <button id="whatsappOrderBtn" class="btn-whatsapp-order">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          <span>Order Directly via WhatsApp</span>
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Boutique Wishlist Drawer -->
+  <div id="wishlistDrawerBackdrop" class="cart-drawer-backdrop" onclick="handleWishlistBackdropClick(event)">
+    <aside class="cart-drawer wishlist-drawer" id="wishlistDrawerAside" aria-label="Boutique Wishlist Drawer">
+      <div class="cart-header">
+        <h3>
+          <svg class="icon-svg" style="fill: #db2777; stroke: #db2777; width: 22px; height: 22px;" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <span>My Saved Wishlist (<span id="wishlistDrawerCount">0</span>)</span>
+        </h3>
+        <div class="cart-header-actions" style="display: flex; align-items: center; gap: 0.6rem;">
+          <button id="closeWishlistBtn" class="modal-close-btn" onclick="closeWishlistDrawer()" aria-label="Close wishlist">&times;</button>
+        </div>
+      </div>
+
+      <div class="cart-body" id="wishlistItemsList">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="cart-footer" id="wishlistFooterArea" style="display: none;">
+        <button type="button" class="btn-primary" style="width: 100%; justify-content: center;" onclick="moveAllWishlistToCart()">
+          <span>Add All Items to Hamper Cart 💖</span>
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 2. Host Admin Login Modal (Restricted Access) -->
+  <div id="hostLoginModal" class="modal-backdrop">
+    <div class="modal-window host-gate-modal">
+      <button id="closeHostModalBtn" class="modal-close-btn" aria-label="Close host login">&times;</button>
+      
+      <div class="brand-logo-emblem" style="width: 72px; height: 72px; margin: 0 auto 1.2rem;">
+        <div class="brand-logo-aura"></div>
+        <img src="assets/images/logo.png" alt="Her Hampers Logo" class="brand-logo-img" style="width: 66px; height: 66px;">
+      </div>
+      <h2>Host Portal Verification</h2>
+      <p class="sub">
+        This administration page is strictly restricted to the <strong>Her Hampers Host Member</strong>. Enter your authenticated credentials to access the inventory & orders dashboard.
+      </p>
+
+      <div id="hostErrorAlert" class="host-error-alert">
+        Access Denied: Invalid Host Username or Password. Please try again.
+      </div>
+
+      <form id="hostLoginForm" onsubmit="handleHostLoginSubmit(event)">
+        <div class="host-form-group">
+          <label for="hostUsernameInput">Host Member ID / Username</label>
+          <input type="text" id="hostUsernameInput" class="host-form-input" placeholder="Enter Host Username" required autocomplete="username">
+        </div>
+
+        <div class="host-form-group">
+          <label for="hostPasswordInput">Secret Host Password</label>
+          <input type="password" id="hostPasswordInput" class="host-form-input" placeholder="Enter Host Password" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" id="hostLoginSubmitBtn" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+          <span>Verify & Open Admin Page</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Checkout Modal -->
+  <div id="checkoutModal" class="modal-backdrop">
+    <div class="modal-window" style="max-width: 620px; padding: 2rem;">
+      <button id="closeCheckoutBtn" class="modal-close-btn" aria-label="Close checkout">&times;</button>
+      <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: var(--pink-100); display: flex; align-items: center; justify-content: center; color: var(--pink-700);">
+          <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+        </div>
+        <div>
+          <h2 style="font-size: 1.4rem;">Checkout & Delivery</h2>
+          <p style="font-size: 0.8rem; color: var(--text-secondary);">Your hamper will be handcrafted and shipped with love</p>
+        </div>
+      </div>
+
+      <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)">
+        <!-- Recipient Information -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 0.9rem;">
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Recipient Name *</label>
+            <input type="text" id="custName" class="host-form-input" required placeholder="e.g. Diya Nair">
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Contact Phone *</label>
+            <input type="tel" id="custPhone" class="host-form-input" required placeholder="e.g. +91 98765 43210">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 0.9rem;">
+          <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Email Address</label>
+          <input type="email" id="custEmail" class="host-form-input" placeholder="e.g. diya@example.com">
+        </div>
+
+        <div style="margin-bottom: 0.9rem;">
+          <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Complete Delivery Address *</label>
+          <textarea id="custAddress" class="host-form-input" style="min-height: 65px; resize: vertical;" required placeholder="House/Flat No, Apartment, Street, Area"></textarea>
+        </div>
+
+        <div class="checkout-address-grid" style="display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 0.85rem; margin-bottom: 1.2rem;">
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">City *</label>
+            <input type="text" id="custCity" class="host-form-input" required placeholder="e.g. Chennai">
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--pink-950);">Delivery State *</label>
+            <select id="custState" class="host-form-input" required onchange="handleStateShippingChange()" style="font-weight: 600; border-color: var(--pink-400);">
+              <option value="" disabled selected>-- Select State --</option>
+              <option value="Tamil Nadu">Tamil Nadu (₹70 Shipping)</option>
+              <optgroup label="Other Indian States (₹100 Shipping)">
+                <option value="Andhra Pradesh">Andhra Pradesh (₹100)</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh (₹100)</option>
+                <option value="Assam">Assam (₹100)</option>
+                <option value="Bihar">Bihar (₹100)</option>
+                <option value="Chhattisgarh">Chhattisgarh (₹100)</option>
+                <option value="Goa">Goa (₹100)</option>
+                <option value="Gujarat">Gujarat (₹100)</option>
+                <option value="Haryana">Haryana (₹100)</option>
+                <option value="Himachal Pradesh">Himachal Pradesh (₹100)</option>
+                <option value="Jharkhand">Jharkhand (₹100)</option>
+                <option value="Karnataka">Karnataka (₹100)</option>
+                <option value="Kerala">Kerala (₹100)</option>
+                <option value="Madhya Pradesh">Madhya Pradesh (₹100)</option>
+                <option value="Maharashtra">Maharashtra (₹100)</option>
+                <option value="Manipur">Manipur (₹100)</option>
+                <option value="Meghalaya">Meghalaya (₹100)</option>
+                <option value="Mizoram">Mizoram (₹100)</option>
+                <option value="Nagaland">Nagaland (₹100)</option>
+                <option value="Odisha">Odisha (₹100)</option>
+                <option value="Punjab">Punjab (₹100)</option>
+                <option value="Rajasthan">Rajasthan (₹100)</option>
+                <option value="Sikkim">Sikkim (₹100)</option>
+                <option value="Telangana">Telangana (₹100)</option>
+                <option value="Tripura">Tripura (₹100)</option>
+                <option value="Uttar Pradesh">Uttar Pradesh (₹100)</option>
+                <option value="Uttarakhand">Uttarakhand (₹100)</option>
+                <option value="West Bengal">West Bengal (₹100)</option>
+                <option value="Andaman and Nicobar">Andaman & Nicobar (₹100)</option>
+                <option value="Chandigarh">Chandigarh (₹100)</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra & Nagar Haveli (₹100)</option>
+                <option value="Delhi">Delhi / NCR (₹100)</option>
+                <option value="Jammu and Kashmir">Jammu & Kashmir (₹100)</option>
+                <option value="Ladakh">Ladakh (₹100)</option>
+                <option value="Lakshadweep">Lakshadweep (₹100)</option>
+                <option value="Puducherry">Puducherry (₹100)</option>
+                <option value="Other State in India">Other State in India (₹100)</option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Pincode *</label>
+            <input type="text" id="custPincode" class="host-form-input" required placeholder="e.g. 600001">
+          </div>
+        </div>
+
+        <!-- Checkout Coupon Box (Address & Delivery Page Only) -->
+        <div style="background: var(--pink-50); border: 1.5px dashed var(--pink-300); border-radius: var(--radius-sm); padding: 0.85rem 1rem; margin-bottom: 1.2rem;">
+          <label for="checkoutCouponInput" style="display:block; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--pink-950);">Have a Promo / Coupon Code?</label>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <input type="text" id="checkoutCouponInput" class="coupon-input" style="background: white;" placeholder="e.g. welcome10">
+            <button type="button" class="btn-apply-coupon" onclick="applyCheckoutCoupon()">Apply</button>
+          </div>
+          <div id="checkoutCouponFeedback" style="margin-top: 0.4rem; font-size: 0.78rem;"></div>
+        </div>
+
+        <!-- Payment Method Selection Grid (Pay Online & Card Only) -->
+        <div style="margin-bottom: 1.1rem;">
+          <label style="display:block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--pink-900);">Select Payment Method:</label>
+          <div class="payment-methods-grid">
+            <!-- 1. Pay Online Option -->
+            <label class="payment-method-card selected" id="methodCardOnline" onclick="selectPaymentMethod('Online')">
+              <input type="radio" name="payMethod" value="Online" checked>
+              <div class="method-icon" style="background: #dcfce7; color: #15803d;">
+                <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              </div>
+              <div class="method-title">Pay Online</div>
+              <div class="method-tag">GPay • PhonePe • Paytm • BHIM</div>
+            </label>
+
+            <!-- 2. Card Option -->
+            <label class="payment-method-card" id="methodCardCard" onclick="selectPaymentMethod('Card')">
+              <input type="radio" name="payMethod" value="Card">
+              <div class="method-icon" style="background: #ede9fe; color: #6d28d9;">
+                <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              </div>
+              <div class="method-title">Debit / Credit Card</div>
+              <div style="display:flex; align-items:center; gap:4px; margin-top:2px;">
+                <span style="font-size: 0.65rem; font-weight:800; color: #1a1f71;">VISA</span>
+                <span style="font-size: 0.65rem; color: var(--text-muted);">•</span>
+                <span style="font-size: 0.65rem; font-weight:800; color: #ea580c;">MC</span>
+                <span style="font-size: 0.65rem; color: var(--text-muted);">•</span>
+                <span style="font-size: 0.65rem; font-weight:800; color: #0284c7;">RuPay</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Dynamic Payment Container -->
+        <div id="paymentDetailsContainer">
+          <!-- 1. Online Payment Gateway Container (GPay, PhonePe, Paytm, BHIM - NO SCANNER) -->
+          <div id="onlineGatewayBox" class="online-gateway-container">
+            <div class="online-header-row">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="background: #15803d; color: white; font-weight: 800; font-size: 0.72rem; padding: 0.2rem 0.5rem; border-radius: 4px;">UPI</span>
+                <span style="font-size: 0.85rem; font-weight: 800; color: var(--pink-950);">Online Payment Apps</span>
+              </div>
+            </div>
+
+            <!-- 4 Prominent Apps Grid with Logos -->
+            <div class="online-apps-grid">
+              <!-- Google Pay -->
+              <div class="online-app-card active" id="appCardGPay" onclick="handlePaymentAppTouch('Google Pay (GPay)', this)">
+                <div class="online-app-logo-box">
+                  <svg viewBox="0 0 48 48" width="32" height="32">
+                    <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                    <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                    <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                  </svg>
+                </div>
+                <div class="online-app-meta">
+                  <div class="online-app-title">
+                    <span>Google Pay</span>
+                    <span style="font-size: 0.72rem; color: #4285F4; font-weight:800;">(GPay)</span>
+                  </div>
+                  <span class="online-app-desc">Instant online transfer</span>
+                </div>
+              </div>
+
+              <!-- PhonePe -->
+              <div class="online-app-card" id="appCardPhonePe" onclick="handlePaymentAppTouch('PhonePe', this)">
+                <div class="online-app-logo-box">
+                  <svg viewBox="0 0 48 48" width="34" height="34">
+                    <circle cx="24" cy="24" r="23" fill="#5f259f"/>
+                    <path fill="#ffffff" d="M31.2 14.5h-5.4c-.4 0-.8.2-1 .6l-8.2 13.8c-.3.5-.1 1.1.4 1.4.2.1.4.1.6.1h4.8v4.2c0 .6.4 1 1 1h2.2c.6 0 1-.4 1-1v-4.2h4.6c.6 0 1-.4 1-1v-2.2c0-.6-.4-1-1-1h-4.6v-7.2h4.6c.6 0 1-.4 1-1v-2.2c0-.7-.4-1.3-1-1.3zm-7.6 11.2h-4.2l5.4-9.1v9.1h-1.2z"/>
+                  </svg>
+                </div>
+                <div class="online-app-meta">
+                  <div class="online-app-title">
+                    <span>PhonePe</span>
+                    <span style="font-size: 0.72rem; color: #5f259f; font-weight:800;">UPI</span>
+                  </div>
+                  <span class="online-app-desc">Instant phone payment</span>
+                </div>
+              </div>
+
+              <!-- Paytm -->
+              <div class="online-app-card" id="appCardPaytm" onclick="handlePaymentAppTouch('Paytm', this)">
+                <div class="online-app-logo-box">
+                  <svg viewBox="0 0 56 26" width="38" height="20">
+                    <rect width="56" height="26" rx="5" fill="#002970"/>
+                    <text x="6" y="18" font-family="'Outfit', sans-serif" font-weight="900" font-size="13" fill="#ffffff">Pay</text>
+                    <text x="32" y="18" font-family="'Outfit', sans-serif" font-weight="900" font-size="13" fill="#00baf2">tm</text>
+                  </svg>
+                </div>
+                <div class="online-app-meta">
+                  <div class="online-app-title">
+                    <span>Paytm</span>
+                    <span style="font-size: 0.72rem; color: #00baf2; font-weight:800;">UPI / Wallet</span>
+                  </div>
+                  <span class="online-app-desc">Fast secure checkout</span>
+                </div>
+              </div>
+
+              <!-- BHIM UPI -->
+              <div class="online-app-card" id="appCardBHIM" onclick="handlePaymentAppTouch('BHIM UPI', this)">
+                <div class="online-app-logo-box">
+                  <svg viewBox="0 0 54 26" width="38" height="20">
+                    <rect width="54" height="26" rx="5" fill="#ffffff" stroke="#00796b" stroke-width="1.5"/>
+                    <text x="6" y="18" font-family="'Outfit', sans-serif" font-weight="900" font-size="12" fill="#00796b">BHIM</text>
+                    <text x="34" y="18" font-family="'Outfit', sans-serif" font-weight="900" font-size="9" fill="#f58220">UPI</text>
+                  </svg>
+                </div>
+                <div class="online-app-meta">
+                  <div class="online-app-title">
+                    <span>BHIM UPI</span>
+                    <span style="font-size: 0.72rem; color: #00796b; font-weight:800;">NPCI</span>
+                  </div>
+                  <span class="online-app-desc">National UPI gateway</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- UPI ID & Copy -->
+            <div class="upi-vpa-copy-row">
+              <div>
+                <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Official Boutique UPI ID:</span>
+                <span class="upi-vpa-text" id="boutiqueVpaText">herhampers@okhdfcbank</span>
+              </div>
+              <button type="button" class="btn-copy-vpa" onclick="copyBoutiqueVpa()">
+                <svg class="icon-svg sm" style="width:12px;height:12px;" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span id="copyVpaLabel">Copy ID</span>
+              </button>
+            </div>
+
+            <!-- Optional 12-digit UTR input -->
+            <div style="margin-top: 0.8rem;">
+              <label style="display:block; font-size: 0.74rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.3rem;">12-Digit UPI Transaction / UTR (Optional):</label>
+              <div class="upi-utr-row">
+                <input type="text" id="upiUtrInput" class="upi-utr-input" placeholder="e.g. 948210348211" maxlength="12">
+                <button type="button" class="upi-utr-autofill" onclick="autoFillTestUtr()">Auto-fill Test UTR</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Interactive Holographic 3D Card Gateway Container -->
+          <div id="cardGatewayBox" class="card-simulator-container" style="display: none;">
+            <div class="online-header-row">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="background: #4338ca; color: white; font-weight: 800; font-size: 0.72rem; padding: 0.2rem 0.5rem; border-radius: 4px;">CARD</span>
+                <span style="font-size: 0.85rem; font-weight: 800; color: var(--pink-950);">Debit / Credit Card Gateway</span>
+              </div>
+            </div>
+
+            <!-- Supported Card Networks with official logos -->
+            <div class="card-brand-logos-panel" style="background: white; border: 1.5px solid var(--pink-200); border-radius: var(--radius-md); padding: 0.75rem 1rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <span style="font-size: 0.78rem; font-weight: 700; color: var(--pink-950);">Accepted Cards:</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <!-- VISA Logo Badge -->
+                <div class="card-logo-badge" style="background: #1a1f71; padding: 4px 10px; border-radius: 6px; display: flex; align-items: center; box-shadow: 0 1px 4px rgba(26,31,113,0.25);" title="Visa">
+                  <svg viewBox="0 0 50 16" width="38" height="12" style="display:block;"><path fill="#ffffff" d="M19.4 0.6l-3.3 14.8h-4.3l3.3-14.8h4.3zm15.8 9.6l1.8-4.8.9 4.8h-2.7zm3.8 5.2h4l-3.5-14.8h-3.7c-.8 0-1.5.5-1.8 1.2l-6.2 13.6h4.5l.9-2.5h5.5l.4 2.5zm-14.3-5c-.1-3.6-5.1-3.8-5.1-5.5 0-.5.6-1 1.8-1.2 1-.1 2.7.2 4.1 1l.7-3.4c-1.1-.4-2.6-.7-4.4-.7-4.6 0-7.8 2.3-7.8 5.6 0 2.4 2.3 3.8 4.1 4.6 1.8.8 2.4 1.4 2.4 2.1 0 1.2-1.5 1.7-2.9 1.7-1.9 0-3.1-.3-4.7-1.1l-.8 3.5c1.1.5 3 .9 5 .9 4.9 0 8.1-2.3 8.1-5.7zM9.5 0.6l-4.2 10.3-.5-2.2c-.7-2.3-3-4.8-5.5-6.1l3.6 12.8h4.5l6.8-14.8h-4.7z"/></svg>
+                </div>
+                <!-- Mastercard Logo Badge -->
+                <div class="card-logo-badge" style="background: #231f20; padding: 3px 8px; border-radius: 6px; display: flex; align-items: center; box-shadow: 0 1px 4px rgba(0,0,0,0.25);" title="Mastercard">
+                  <svg viewBox="0 0 40 24" width="28" height="17" style="display:block;"><circle cx="14" cy="12" r="11" fill="#eb001b"/><circle cx="26" cy="12" r="11" fill="#f79e1b" fill-opacity="0.92"/><path d="M20 4.8a11 11 0 0 0 0 14.4 11 11 0 0 0 0-14.4z" fill="#ff5f00"/></svg>
+                </div>
+                <!-- RuPay Logo Badge -->
+                <div class="card-logo-badge" style="background: #ffffff; border: 1px solid #cbd5e1; padding: 3px 8px; border-radius: 6px; display: flex; align-items: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06);" title="RuPay">
+                  <svg viewBox="0 0 56 16" width="38" height="12" style="display:block;"><path fill="#0284c7" d="M0 0h12c3.5 0 6 2.2 6 5.5s-2.5 5.5-6 5.5h-5v5H0V0zm7 3.5v4h4.5c1.4 0 2.5-.8 2.5-2s-1.1-2-2.5-2H7z"/><path fill="#ea580c" d="M21 0h6.5l4.5 9 4.5-9h6.5L34 16h-5l-8-16z"/><text x="44" y="12" font-family="'Outfit', sans-serif" font-weight="900" font-size="10" fill="#0284c7">Pay</text></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Autofill Card Button Row -->
+            <div class="card-autofill-row">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--pink-950);">💳 3D-Secure Card Checkout</span>
+              <button type="button" class="btn-autofill-test" onclick="autoFillTestCard()">
+                <span>⚡ Fill Test Card</span>
+              </button>
+            </div>
+
+            <!-- Holographic Interactive Card Preview -->
+            <div class="holo-card-stage">
+              <div class="holo-card" id="holoCardPreview">
+                <div class="holo-card-sheen"></div>
+                <div class="holo-card-header">
+                  <div class="holo-card-chip"></div>
+                  <div class="holo-card-brand-logo">
+                    <span id="holoCardBrandPill" class="brand-icon-pill">VISA</span>
+                  </div>
+                </div>
+
+                <div class="holo-card-number" id="holoCardNumDisplay">
+                  •••• •••• •••• ••••
+                </div>
+
+                <div class="holo-card-footer">
+                  <div>
+                    <span class="holo-card-label">Cardholder</span>
+                    <span class="holo-card-val" id="holoCardNameDisplay">YOUR NAME</span>
+                  </div>
+                  <div>
+                    <span class="holo-card-label">Expires</span>
+                    <span class="holo-card-val" id="holoCardExpiryDisplay">MM/YY</span>
+                  </div>
+                  <div>
+                    <span class="holo-card-label">CVV</span>
+                    <span class="holo-card-val" id="holoCardCvvDisplay">•••</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Inputs Form -->
+            <div style="background: white; border: 1px solid var(--pink-200); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="margin-bottom: 0.8rem;">
+                <label style="font-size: 0.76rem; font-weight: 700; color: var(--pink-950); display: block; margin-bottom: 0.25rem;">Card Number *</label>
+                <div style="position: relative;">
+                  <input type="text" id="simCardNumber" class="host-form-input" style="font-family: monospace; letter-spacing: 1px;" placeholder="4532 8910 2345 6789" maxlength="19" oninput="handleCardNumberInput(this)">
+                  <span id="cardBrandInlineBadge" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 0.72rem; font-weight: 800; color: #2563eb;">VISA</span>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 0.8rem;">
+                <label style="font-size: 0.76rem; font-weight: 700; color: var(--pink-950); display: block; margin-bottom: 0.25rem;">Cardholder Name *</label>
+                <input type="text" id="simCardName" class="host-form-input" placeholder="e.g. Priya Sharma" oninput="handleCardNameInput(this)">
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div>
+                  <label style="font-size: 0.76rem; font-weight: 700; color: var(--pink-950); display: block; margin-bottom: 0.25rem;">Expiry Date *</label>
+                  <input type="text" id="simCardExpiry" class="host-form-input" placeholder="MM/YY" maxlength="5" oninput="handleCardExpiryInput(this)">
+                </div>
+                <div>
+                  <label style="font-size: 0.76rem; font-weight: 700; color: var(--pink-950); display: block; margin-bottom: 0.25rem;">Security CVV *</label>
+                  <input type="password" id="simCardCvv" class="host-form-input" placeholder="•••" maxlength="4" oninput="handleCardCvvInput(this)">
+                </div>
+              </div>
+
+              <div style="margin-top: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+                <input type="checkbox" id="saveCardCheck" checked style="accent-color: var(--pink-600);">
+                <label for="saveCardCheck" style="font-size: 0.75rem; color: var(--text-secondary); cursor: pointer;">
+                  Save card securely with 256-Bit Tokenization for future boutique purchases
+                </label>
+              </div>
+
+              <!-- Instant Card Connect Button -->
+              <div style="margin-top: 0.9rem; text-align: center;">
+                <button type="button" class="btn-whatsapp-card-direct" onclick="handlePaymentAppTouch('Debit / Credit Card', null)" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: linear-gradient(135deg, #f472b6, #db2777); color: white; border: none; padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-weight: 800; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                  <span>Touch to Pay via Card</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakdown & Total Payable -->
+        <div style="background: var(--pink-50); border: 1px solid var(--pink-200); padding: 1.1rem; border-radius: var(--radius-md); margin-bottom: 1.2rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+            <span style="color: var(--text-secondary);">Items Subtotal:</span>
+            <span id="checkoutSubtotal">₹0</span>
+          </div>
+          <div id="checkoutDiscountRow" style="display: none; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem; color: #10b981;">
+            <span>Discount (<span id="checkoutDiscountTag"></span>):</span>
+            <span id="checkoutDiscountVal">- ₹0</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+            <span style="color: var(--text-secondary);">Satin Gift Packaging:</span>
+            <span style="color: #10b981; font-weight: 600;">FREE</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.6rem;">
+            <span id="checkoutShippingLabel" style="color: var(--text-secondary);">Express Shipping:</span>
+            <span style="color: var(--pink-700); font-weight: 700;" id="checkoutShippingDisplay">+ ₹70 (Tamil Nadu) / ₹100 (India)</span>
+          </div>
+          <div style="border-top: 1.5px dashed var(--pink-300); padding-top: 0.6rem; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 700; font-size: 0.95rem; color: var(--pink-950);">Final Amount Payable:</span>
+            <span id="checkoutTotalPayable" style="font-size: 1.4rem; font-weight: 800; color: var(--pink-700);">₹0</span>
+          </div>
+        </div>
+
+        <!-- Boutique Order Cancellation & Return Policy Disclaimer -->
+        <div class="checkout-disclaimer-box" style="background: #fff1f2; border: 1.5px solid #fecdd3; border-radius: var(--radius-md); padding: 0.85rem 1rem; margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+          <span style="font-size: 1.25rem; line-height: 1;">🌸</span>
+          <div style="font-size: 0.78rem; color: #9f1239; line-height: 1.45;">
+            <strong style="display: block; font-weight: 700; margin-bottom: 2px;">Boutique Order Policy:</strong>
+            Please note that each luxury hamper and handcrafted gift item is bespoke and prepared specially for you with love. Therefore, <strong>orders cannot be cancelled or returned</strong> once placed.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="checkoutSubmitBtn" class="btn-primary" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1rem;">
+          <span id="checkoutSubmitText">Verify & Complete Order</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Order Confirmation Modal -->
+  <div id="orderSuccessModal" class="modal-backdrop">
+    <div class="modal-window" style="max-width: 500px; text-align: center; padding: 2.5rem 2rem;">
+      <div style="width: 65px; height: 65px; border-radius: 50%; background: #dcfce7; color: #15803d; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; box-shadow: 0 8px 20px rgba(21, 128, 61, 0.2);">
+        <svg class="icon-svg lg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2 style="font-size: 1.7rem; margin-bottom: 0.4rem; color: var(--pink-950);">Order Placed Successfully!</h2>
+      <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.4rem;">
+        Thank you for trusting Her Hampers! Your bespoke order is being lovingly prepared by our artisans.
+      </p>
+
+      <div style="background: var(--pink-50); border: 1.5px dashed var(--pink-300); border-radius: var(--radius-md); padding: 1.2rem; margin-bottom: 1.5rem; text-align: left;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.88rem;">
+          <span style="color: var(--text-muted);">Order Tracking ID:</span>
+          <strong id="successOrderId" style="color: var(--pink-800); font-family: monospace; font-size: 0.95rem;">#HH-00000</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.88rem;">
+          <span style="color: var(--text-muted);">Payment Mode:</span>
+          <strong id="successPayMethod">UPI Gateway</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.88rem;" id="successUpiRefRow">
+          <span style="color: var(--text-muted);">Transaction UTR:</span>
+          <strong id="successUpiRef" style="font-family: monospace;">UPI-49210</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+          <span style="color: var(--text-muted);">Estimated Delivery:</span>
+          <strong>3 - 7 Working Days</strong>
+        </div>
+      </div>
+
+      <!-- Post-Order App Experience Rating Widget -->
+      <div id="postOrderAppRatingCard" class="app-rating-box">
+        <div class="app-rating-header" style="justify-content: center; text-align: center; flex-direction: column; gap: 0.35rem;">
+          <div style="display: inline-flex; align-items: center; gap: 0.45rem;">
+            <span class="app-rating-icon">⭐💖⭐</span>
+            <strong style="font-size: 1.12rem; color: var(--pink-950); letter-spacing: 0.2px;">Rate Her Hampers App</strong>
+          </div>
+          <span style="font-size: 0.82rem; color: var(--text-secondary);">Your order is confirmed! Please take 5 seconds to rate your app experience:</span>
+        </div>
+
+        <div class="star-rating-widget" id="appStarRatingWidget" style="margin-top: 0.35rem;">
+          <div class="stars-row" id="appRatingStars">
+            <button type="button" class="app-star-btn" data-value="1" onclick="setAppRating(1)" aria-label="1 Star">★</button>
+            <button type="button" class="app-star-btn" data-value="2" onclick="setAppRating(2)" aria-label="2 Stars">★</button>
+            <button type="button" class="app-star-btn" data-value="3" onclick="setAppRating(3)" aria-label="3 Stars">★</button>
+            <button type="button" class="app-star-btn" data-value="4" onclick="setAppRating(4)" aria-label="4 Stars">★</button>
+            <button type="button" class="app-star-btn active" data-value="5" onclick="setAppRating(5)" aria-label="5 Stars">★</button>
+          </div>
+          <span id="appRatingLabel" class="rating-descriptor" style="margin-top: 4px; font-size: 0.92rem; color: var(--pink-700);">5 of 5 - Loved it! ⭐⭐⭐⭐⭐</span>
+        </div>
+
+        <!-- Quick Tags -->
+        <div class="app-rating-tags" id="appRatingTags">
+          <button type="button" class="feedback-tag" onclick="toggleFeedbackTag(this)">🌸 Easy to Order</button>
+          <button type="button" class="feedback-tag" onclick="toggleFeedbackTag(this)">⚡ Smooth UPI</button>
+          <button type="button" class="feedback-tag" onclick="toggleFeedbackTag(this)">🎁 Lovely Packaging</button>
+          <button type="button" class="feedback-tag" onclick="toggleFeedbackTag(this)">✨ Beautiful Items</button>
+          <button type="button" class="feedback-tag" onclick="toggleFeedbackTag(this)">📱 Great App Design</button>
+          <button type="button" class="feedback-tag" onclick="toggleFeedbackTag(this)">🚀 Fast Checkout</button>
+        </div>
+
+        <textarea id="appRatingComment" class="app-rating-textarea" placeholder="Leave a heartfelt note or suggestion for our boutique app... (optional)" rows="2"></textarea>
+
+        <button type="button" id="submitAppRatingBtn" onclick="submitAppRating()" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.75rem 1rem; font-size: 0.92rem; margin-top: 0.6rem; background: linear-gradient(135deg, #ec4899, #db2777); font-weight: 700; box-shadow: 0 4px 15px rgba(219,39,119,0.25);">
+          <span>Submit App Rating (5 of 5) ⭐</span>
+        </button>
+
+        <div id="appRatingSuccessMsg" style="display: none; padding: 0.85rem; background: #ecfdf5; border: 1.5px solid #6ee7b7; border-radius: 8px; color: #065f46; font-size: 0.88rem; margin-top: 0.6rem; text-align: center; box-shadow: 0 4px 12px rgba(6,95,70,0.1);">
+          🌸 <strong>Thank you for rating Her Hampers App!</strong> Your feedback inspires our boutique artisans!
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-top: 1.1rem;">
+        <button id="successPrintInvoiceBtn" onclick="openOrderInvoice(lastCreatedOrderId)" class="btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #db2777, #be185d);">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Download / Print Tax Invoice (PDF)</span>
+        </button>
+
+        <button onclick="openTrackOrderModal(lastCreatedOrderId)" class="btn-secondary" style="width: 100%; justify-content: center;">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          <span>Track Order Real-Time</span>
+        </button>
+
+        <button id="successDoneBtn" class="btn-secondary" style="width: 100%; justify-content: center; border-color: transparent; color: var(--text-muted);">
+          <span>Continue Shopping</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Tax Invoice & Order Receipt Modal (Printable) -->
+  <div id="invoiceModal" class="modal-backdrop">
+    <div class="modal-window invoice-modal-window">
+      <div class="invoice-actions-bar">
+        <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--pink-900);">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Her Hampers - Tax Invoice & Packing Slip</span>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center;">
+          <button class="btn-primary" onclick="window.print()" style="padding: 0.45rem 1.1rem; font-size: 0.82rem;">
+            <svg class="icon-svg sm" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Print / Save PDF</span>
+          </button>
+          <button class="modal-close-btn" style="position: static; width: 32px; height: 32px;" onclick="closeInvoiceModal()">&times;</button>
+        </div>
+      </div>
+      <div id="invoicePrintableArea" class="invoice-sheet">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Customer Order Tracking Modal -->
+  <div id="trackOrderModal" class="modal-backdrop">
+    <div class="modal-window track-order-modal-window">
+      <button class="modal-close-btn" onclick="closeTrackOrderModal()">&times;</button>
+      <div style="text-align: center; margin-bottom: 1.4rem;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--pink-100); color: var(--pink-600); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem;">
+          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        </div>
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.3rem;">Track Your Her Hampers Order</h2>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">Enter your Order ID (e.g. HH-10492) or contact phone number</p>
+      </div>
+
+      <div class="track-search-bar">
+        <input type="text" id="trackSearchInput" class="track-search-input" placeholder="e.g. HH-10492 or 9845122890" onkeydown="if(event.key==='Enter')handleTrackSearch()">
+        <button class="btn-primary" onclick="handleTrackSearch()" style="padding: 0 1.4rem;">
+          <span>Track</span>
+        </button>
+      </div>
+
+      <div class="track-sample-chips">
+        <span>Recent Orders:</span>
+        <span id="trackQuickChipsContainer" style="display: inline-flex; gap: 0.35rem; flex-wrap: wrap;"></span>
+      </div>
+
+      <div id="trackOrderResultContainer">
+        <!-- Dynamic Timeline and Courier Info -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Product Details Page Modal (Full-Screen on Mobile) -->
+  <div id="quickViewModal" class="modal-backdrop product-page-backdrop">
+    <div class="modal-window quick-view-modal product-page-modal">
+      
+      <!-- Mobile Native Top App Bar -->
+      <div class="product-page-mobile-header">
+        <button type="button" class="btn-product-back" onclick="closeQuickViewModal()" aria-label="Go Back">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Catalog</span>
+        </button>
+        <span class="mobile-header-brand">Her Hampers</span>
+        <button type="button" class="btn-product-close" onclick="closeQuickViewModal()" aria-label="Close product view">&times;</button>
+      </div>
+
+      <!-- Desktop Close Button -->
+      <button id="closeQuickViewBtn" class="modal-close-btn desktop-close-btn" onclick="closeQuickViewModal()" aria-label="Close product view">&times;</button>
+      
+      <div class="quick-view-img product-page-img-col">
+        <div class="main-img-stage">
+          <img id="qvImage" src="" alt="Product view">
+        </div>
+        <div id="qvGalleryThumbs" class="qv-gallery-thumbs" style="display: none; gap: 0.5rem; margin-top: 0.75rem; overflow-x: auto; padding-bottom: 0.35rem; scrollbar-width: thin;"></div>
+      </div>
+      
+      <div class="quick-view-details product-page-details-col">
+        <div class="product-cat-pill" id="qvCategory">Category</div>
+        <h2 id="qvTitle" class="product-page-title" style="font-size: 1.55rem; font-weight: 700; color: var(--pink-950); margin-bottom: 0.4rem;">Title</h2>
+        
+        <div class="product-rating" id="qvRating" style="margin-bottom: 0.75rem;">
+          <span class="rating-badge-text">Rating: 5.0 / 5.0</span>
+        </div>
+
+        <div class="product-price-row" style="margin-bottom: 1rem; align-items: baseline;">
+          <span id="qvPrice" class="price-current" style="font-size: 1.6rem; font-weight: 800; color: var(--pink-700);">₹0</span>
+          <span id="qvOriginalPrice" class="price-original" style="font-size: 1rem; margin-left: 0.5rem;">₹0</span>
+        </div>
+
+        <!-- Sizes Selection (Bangles, Rings, Clips, etc.) -->
+        <div id="qvSizeSection" class="product-variant-section" style="display: none; margin-bottom: 1.1rem;">
+          <div class="variant-label-row">
+            <span class="variant-title">
+              <strong>Select Size:</strong>
+              <span id="qvSelectedSizeName" class="variant-current-choice"></span>
+            </span>
+            <span class="variant-subnote">Striked out sizes are Out of Stock</span>
+          </div>
+          <div id="qvSizesGrid" class="variant-chips-wrap"></div>
+        </div>
+
+        <!-- Colors Selection -->
+        <div id="qvColorSection" class="product-variant-section" style="display: none; margin-bottom: 1.1rem;">
+          <div class="variant-label-row">
+            <span class="variant-title">
+              <strong>Select Color / Shade:</strong>
+              <span id="qvSelectedColorName" class="variant-current-choice"></span>
+            </span>
+            <span class="variant-subnote">Striked out colors are Out of Stock</span>
+          </div>
+          <div id="qvColorsGrid" class="variant-chips-wrap"></div>
+        </div>
+
+        <div class="product-page-badges-row" style="display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.2rem;">
+          <span class="product-trust-chip">🌸 Handcrafted Boutique</span>
+          <span class="product-trust-chip">✨ Bespoke Packaging</span>
+          <span class="product-trust-chip">🚚 3 - 7 Working Days Delivery</span>
+        </div>
+
+        <div class="product-desc-wrap" style="margin-bottom: 1rem;">
+          <h4 style="font-size: 0.88rem; color: var(--pink-950); margin-bottom: 0.35rem; font-weight: 700;">Product Description</h4>
+          <p id="qvDescription" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            Description
+          </p>
+        </div>
+
+        <div class="product-specs-wrap" style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.88rem; color: var(--pink-950); margin-bottom: 0.35rem; font-weight: 700;">Highlights & Inclusions</h4>
+          <ul id="qvDetailsList" style="font-size: 0.84rem; color: var(--text-secondary); padding-left: 1.2rem; line-height: 1.5;">
+            <!-- Bullet specs -->
+          </ul>
+        </div>
+
+        <!-- Customer Reviews & Ratings Section Inside Product -->
+        <div id="qvReviewsSection" class="product-reviews-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h4 style="font-size: 1.05rem; color: var(--pink-950); margin: 0; font-weight: 700;">Customer Reviews &amp; Ratings</h4>
+              <span id="qvReviewsSubheader" style="font-size: 0.8rem; color: var(--text-secondary);">Verified feedback from Her Hampers boutique patrons</span>
+            </div>
+            <button type="button" id="qvWriteReviewBtn" onclick="openProductReviewModalFromQV()" class="btn-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 5px;">
+              <span>✍️ Write a Review</span>
+            </button>
+          </div>
+
+          <!-- Overall Rating Scorecard -->
+          <div class="product-scorecard-box">
+            <div class="scorecard-big-rating">
+              <span id="qvBigRatingNumber" class="big-rating-val">5.0</span>
+              <div class="scorecard-rating-meta">
+                <span class="scorecard-of-five">of 5</span>
+                <div class="scorecard-stars" id="qvScorecardStars">
+                  <span style="color: #f59e0b; font-size: 1.15rem; letter-spacing: 2px;">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <div class="scorecard-summary-text">
+              <span id="qvScorecardCount" style="font-weight: 700; color: var(--pink-900); font-size: 0.88rem;">Based on 42 reviews</span>
+              <span style="display: block; font-size: 0.76rem; color: #15803d; font-weight: 600; margin-top: 2px;">✓ 100% Verified Boutique Buyers Recommend this</span>
+            </div>
+          </div>
+
+          <!-- Reviews List -->
+          <div id="qvReviewsListContainer" class="product-reviews-list">
+            <!-- Dynamically populated customer reviews -->
+          </div>
+        </div>
+
+        <div class="product-page-action-bar">
+          <button id="qvAddToCartBtn" type="button" class="btn-secondary qv-action-btn" title="Add item to your cart">
+            <span>🛒 Add to Cart</span>
+          </button>
+          <button id="qvBuyProductBtn" type="button" class="btn-primary btn-buy-product-animated qv-action-btn" title="Buy product immediately and proceed to checkout">
+            <span>⚡ Buy Product</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Product Review & Rating Modal -->
+  <div id="productReviewModal" class="modal-backdrop">
+    <div class="modal-window product-review-modal-window" style="max-width: 520px; padding: 2rem;">
+      <button class="modal-close-btn" onclick="closeProductReviewModal()">&times;</button>
+      
+      <div style="display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--pink-100); padding-bottom: 1rem;">
+        <img id="reviewProdThumb" src="assets/images/logo.png" alt="Product" style="width: 58px; height: 58px; border-radius: 10px; object-fit: cover; border: 1.5px solid var(--pink-200); box-shadow: 0 4px 10px rgba(0,0,0,0.06);">
+        <div style="flex: 1;">
+          <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--pink-600); letter-spacing: 0.5px;">Customer Rating &amp; Review</span>
+          <h3 id="reviewProdTitle" style="font-size: 1.05rem; font-weight: 700; color: var(--pink-950); margin: 2px 0 0;">Product Name</h3>
+          <span id="reviewOrderTag" style="font-size: 0.75rem; color: var(--text-muted); display: block;">Verified Purchase</span>
+        </div>
+      </div>
+
+      <form id="productReviewForm" onsubmit="handleProductReviewSubmit(event)">
+        <input type="hidden" id="reviewProdId" value="">
+        <input type="hidden" id="reviewOrderId" value="">
+        <input type="hidden" id="reviewChosenVariant" value="">
+        <input type="hidden" id="reviewSelectedRating" value="5">
+
+        <!-- Star Rating Picker -->
+        <div style="margin-bottom: 1.1rem; text-align: center; background: #fff1f2; border: 1.5px dashed #fbcfe8; border-radius: 12px; padding: 1rem;">
+          <label style="display: block; font-size: 0.86rem; font-weight: 700; color: var(--pink-950); margin-bottom: 0.35rem;">
+            Select Product Rating:
+          </label>
+          <div class="prod-star-picker-row" id="prodStarPickerRow">
+            <button type="button" class="prod-star-btn" data-value="1" onclick="setProductStarRating(1)" title="1 of 5 - Poor">★</button>
+            <button type="button" class="prod-star-btn" data-value="2" onclick="setProductStarRating(2)" title="2 of 5 - Fair">★</button>
+            <button type="button" class="prod-star-btn" data-value="3" onclick="setProductStarRating(3)" title="3 of 5 - Good">★</button>
+            <button type="button" class="prod-star-btn" data-value="4" onclick="setProductStarRating(4)" title="4 of 5 - Very Good">★</button>
+            <button type="button" class="prod-star-btn active" data-value="5" onclick="setProductStarRating(5)" title="5 of 5 - Outstanding">★</button>
+          </div>
+          <div id="prodStarRatingText" style="font-size: 0.98rem; font-weight: 800; color: var(--pink-700); margin-top: 0.35rem;">
+            5.0 of 5 (Outstanding quality! ⭐)
+          </div>
+        </div>
+
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--pink-900); margin-bottom: 0.25rem;">Your Name / Nickname</label>
+          <input type="text" id="reviewerNameInput" class="form-input" placeholder="e.g. Aadhya Sharma" required style="width: 100%; padding: 0.65rem 0.85rem; border: 1.5px solid var(--pink-200); border-radius: 8px;">
+        </div>
+
+        <div style="margin-bottom: 0.85rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--pink-900); margin-bottom: 0.25rem;">Review Headline (Optional)</label>
+          <input type="text" id="reviewHeadlineInput" class="form-input" placeholder="e.g. Exquisite finish & gorgeous shine!" style="width: 100%; padding: 0.65rem 0.85rem; border: 1.5px solid var(--pink-200); border-radius: 8px;">
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--pink-900); margin-bottom: 0.25rem;">Your Product Review</label>
+          <textarea id="reviewCommentInput" class="form-input" rows="3" placeholder="Share your experience (shine, material, fitting, how it looked when worn, satin packaging)..." required style="width: 100%; padding: 0.65rem 0.85rem; border: 1.5px solid var(--pink-200); border-radius: 8px; resize: vertical;"></textarea>
+        </div>
+
+        <button type="submit" id="submitProductReviewBtn" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.95rem; background: linear-gradient(135deg, #ec4899, #be185d);">
+          <span>Submit Product Review 🌸</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Proactive Delivered Order Review Prompt Banner -->
+  <div id="deliveredOrderReviewPromptBanner" class="delivered-order-floating-banner" style="display: none;" role="alert"></div>
+
+  <!-- ========================================================
+       OPENING PAGE: LOGO SELF-FORMATION ENTRANCE
+       ======================================================== -->
+  <div id="openingPageSplash" class="opening-page-splash">
+    <div class="ambient-petals-bg" id="ambientPetalsContainer"></div>
+    <div class="opening-page-card">
+      <div class="opening-badge-tag">
+        <span>Welcome to Her Hampers</span>
+      </div>
+      <h2 class="opening-brand-title">Her • Made With Love</h2>
+      <p class="opening-brand-sub">Crafting your bespoke gifting experience...</p>
+
+      <!-- Logo Formation Animation Stage -->
+      <div class="logo-formation-stage">
+        <div class="stage-glow-aura" id="stageGlowAura"></div>
+
+        <!-- SVG Vector Layer -->
+        <svg class="stage-svg-canvas" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 1. Pastel Pink Disc -->
+          <circle class="vec-bg-circle" id="vecBgCircle" cx="250" cy="250" r="190" fill="#f9c8d3" />
+
+          <!-- 2. Painterly Circular Brush Ring -->
+          <circle class="vec-brush-ring" id="vecBrushRing" cx="250" cy="250" r="198" stroke="#be8594" stroke-width="8" stroke-linecap="round" />
+          <circle class="vec-brush-ring" id="vecBrushRingInner" cx="250" cy="250" r="186" stroke="#be8594" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+
+          <!-- 3. Four-Pointed Sparkle Stars -->
+          <!-- Top Left -->
+          <path class="vec-sparkle" id="vecSparkle1" d="M 140 185 Q 155 185 155 170 Q 155 185 170 185 Q 155 185 155 200 Q 155 185 140 185 Z" fill="#ffffff" />
+          <!-- Mid Left -->
+          <path class="vec-sparkle" id="vecSparkle2" d="M 165 210 Q 173 210 173 202 Q 173 210 181 210 Q 173 210 173 218 Q 173 210 165 210 Z" fill="#ffffff" opacity="0.9" />
+          <!-- Right Top -->
+          <path class="vec-sparkle" id="vecSparkle3" d="M 350 260 Q 365 260 365 245 Q 365 260 380 260 Q 365 260 365 275 Q 365 260 350 260 Z" fill="#ffffff" />
+          <!-- Right Bottom -->
+          <path class="vec-sparkle" id="vecSparkle4" d="M 335 285 Q 343 285 343 277 Q 343 285 351 285 Q 343 285 343 293 Q 343 285 335 285 Z" fill="#ffffff" opacity="0.9" />
+
+          <!-- 4. Gift Tote / Shopping Bag -->
+          <g class="vec-bag-body" id="vecBagGroup">
+            <!-- Bag Handles -->
+            <path d="M 232 170 C 232 120 268 120 268 170" stroke="#483238" stroke-width="7" stroke-linecap="round" fill="none" />
+            <!-- Bag Front Paper Panel -->
+            <polygon points="210,165 312,165 318,290 208,290" fill="#fcf6f5" />
+            <!-- Bag Side 3D Shadow Panel -->
+            <polygon points="188,165 210,165 208,290 186,272" fill="#67444c" />
+          </g>
+
+          <!-- 5. Floral Peony Illustration on Bag -->
+          <g class="vec-flowers" id="vecFlowersGroup">
+            <!-- Stems & leaves -->
+            <path d="M 228 276 Q 245 255 265 240 Q 275 220 285 205" stroke="#483238" stroke-width="2.5" stroke-linecap="round" fill="none" />
+            <!-- Leaves -->
+            <path d="M 245 255 Q 255 258 260 252 Q 252 248 245 255 Z" fill="#8c5866" />
+            <path d="M 268 238 Q 278 242 284 236 Q 276 232 268 238 Z" fill="#8c5866" />
+            <!-- Blossom 1 -->
+            <ellipse cx="270" cy="225" rx="22" ry="18" fill="#bc7788" transform="rotate(-15 270 225)" />
+            <ellipse cx="276" cy="220" rx="16" ry="13" fill="#a45869" transform="rotate(-10 276 220)" />
+            <!-- Blossom 2 -->
+            <circle cx="238" cy="242" r="14" fill="#c48595" />
+            <circle cx="240" cy="240" r="10" fill="#aa6374" />
+          </g>
+
+          <!-- 6. Calligraphy Script Text "Her" -->
+          <g class="vec-text-her" id="vecTextHer">
+            <text x="250" y="342" font-family="'Great Vibes', 'Playfair Display', cursive" font-size="54" font-weight="700" text-anchor="middle" fill="#50333b">Her</text>
+          </g>
+
+          <!-- 7. Subtitle "MADE WITH LOVE" -->
+          <g class="vec-text-sub" id="vecTextSub">
+            <text x="250" y="365" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" text-anchor="middle" fill="#8c5866">MADE WITH LOVE</text>
+          </g>
+        </svg>
+
+        <!-- 8. Final High-Res Authentic Logo Overlay -->
+        <img src="assets/images/logo.png" alt="Her Logo Crystallized" class="stage-final-logo" id="stageFinalLogo">
+
+        <!-- 9. Shimmer Light Beam -->
+        <div class="stage-shimmer-sweep" id="stageShimmer"></div>
+      </div>
+
+      <!-- Progress & Status Info -->
+      <div class="formation-status-label" id="formationStatusLabel">
+        <span>Beginning the creation of Her...</span>
+      </div>
+      <div class="formation-progress-bar-wrap">
+        <div class="formation-progress-fill" id="formationProgressFill"></div>
+      </div>
+
+      <!-- Opening Page Actions -->
+      <div class="theater-actions" style="margin-top: 1.4rem; display: flex; justify-content: center; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+        <button class="btn-primary" onclick="dismissOpeningPage()" style="padding: 0.9rem 2.4rem; font-size: 1.05rem; font-weight: 700; cursor: pointer; box-shadow: 0 10px 25px rgba(219,39,119,0.35); display: inline-flex; align-items: center; gap: 0.6rem;">
+          <span>Enter Boutique & Explore Products</span>
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Razorpay Standard Checkout Simulation Modal -->
+  <div id="razorpayCheckoutModal" class="modal-backdrop modal-razorpay-overlay">
+    <div class="modal-window modal-razorpay-window">
+      <div class="razorpay-modal-top">
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <img src="assets/images/logo.png" alt="Her Hampers Logo" style="width: 38px; height: 38px; border-radius: 50%; background: white; padding: 2px;">
+          <div>
+            <h3 style="font-size: 1.15rem; margin: 0; color: white;">Her Hampers Boutique</h3>
+            <span style="font-size: 0.72rem; color: #94a3b8;">Order <span id="rzpModalOrderId">#HH-00000</span></span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 0.72rem; color: #94a3b8; text-transform: uppercase;">Amount to Pay</div>
+          <strong id="rzpModalAmount" style="font-size: 1.35rem; color: #38ef7d; font-family: monospace;">₹0</strong>
+        </div>
+      </div>
+
+      <div class="razorpay-modal-body">
+        <div style="font-size: 0.78rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 0.8rem; letter-spacing: 0.5px;">
+          Select Razorpay Payment Mode
+        </div>
+
+        <!-- Option 1: Razorpay UPI -->
+        <div class="razorpay-option-row selected" onclick="selectRzpSubOption('UPI', this)">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.2rem;">📱</span>
+            <div>
+              <strong style="font-size: 0.88rem; color: white; display: block;">UPI (Google Pay, PhonePe, Paytm)</strong>
+              <span style="font-size: 0.72rem; color: #94a3b8;">Instant mobile intent or QR scan</span>
+            </div>
+          </div>
+          <span style="color: #38ef7d; font-size: 0.85rem; font-weight: 700;">● Active</span>
+        </div>
+
+        <!-- Option 2: Razorpay Cards -->
+        <div class="razorpay-option-row" onclick="selectRzpSubOption('Cards', this)">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.2rem;">💳</span>
+            <div>
+              <strong style="font-size: 0.88rem; color: white; display: block;">Credit or Debit Card</strong>
+              <span style="font-size: 0.72rem; color: #94a3b8;">Visa, Mastercard, RuPay, Maestro</span>
+            </div>
+          </div>
+          <span style="font-size: 0.75rem; color: #64748b;">Select</span>
+        </div>
+
+        <!-- Option 3: Razorpay NetBanking -->
+        <div class="razorpay-option-row" onclick="selectRzpSubOption('NetBanking', this)">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.2rem;">🏦</span>
+            <div>
+              <strong style="font-size: 0.88rem; color: white; display: block;">NetBanking</strong>
+              <span style="font-size: 0.72rem; color: #94a3b8;">All Indian major banks supported</span>
+            </div>
+          </div>
+          <span style="font-size: 0.75rem; color: #64748b;">Select</span>
+        </div>
+
+        <!-- Option 4: Razorpay Wallet & Pay Later -->
+        <div class="razorpay-option-row" onclick="selectRzpSubOption('Wallets', this)">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.2rem;">⚡</span>
+            <div>
+              <strong style="font-size: 0.88rem; color: white; display: block;">Wallets &amp; PayLater</strong>
+              <span style="font-size: 0.72rem; color: #94a3b8;">Cred, Paytm, Mobikwik, LazyPay</span>
+            </div>
+          </div>
+          <span style="font-size: 0.75rem; color: #64748b;">Select</span>
+        </div>
+
+        <div style="margin-top: 1.4rem;">
+          <button type="button" id="rzpConfirmPayBtn" class="btn-razorpay-trigger" onclick="completeRazorpayPayment()">
+            <span id="rzpConfirmBtnText">✓ Pay <span id="rzpBtnAmountText">₹0</span> with Razorpay</span>
+          </button>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem;">
+            <span style="font-size: 0.72rem; color: #64748b;">🔒 256-Bit SSL Encrypted by Razorpay</span>
+            <button type="button" onclick="closeRazorpayModal()" style="background: none; border: none; color: #94a3b8; font-size: 0.75rem; cursor: pointer; text-decoration: underline;">
+              Cancel &amp; Return
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 3D-Secure Bank OTP Simulation Modal -->
+  <div id="card3dsModal" class="modal-backdrop">
+    <div class="modal-window" style="max-width: 440px; text-align: center; padding: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 0.8rem; margin-bottom: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: #1e1b4b; color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem;">
+            3DS
+          </div>
+          <div style="text-align: left;">
+            <strong style="font-size: 0.95rem; color: var(--pink-950); display: block;">Bank 3D-Secure 2.0</strong>
+            <span style="font-size: 0.72rem; color: var(--text-muted);" id="card3dsBankName">HDFC Bank • Verified by Visa</span>
+          </div>
+        </div>
+        <span style="background: #ecfdf5; color: #047857; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 999px;">
+          🔒 Encrypted
+        </span>
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem;">
+        A One-Time Password (OTP) has been sent to your registered mobile:
+      </p>
+      <div style="font-size: 1.05rem; font-weight: 800; color: var(--pink-950); margin-bottom: 1.2rem;">
+        +91 98••• •••10
+      </div>
+
+      <div style="margin-bottom: 1.2rem;">
+        <label for="cardOtpInput" style="display:block; font-size: 0.76rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase;">
+          Enter 6-Digit OTP:
+        </label>
+        <input type="text" id="cardOtpInput" class="otp-box-input" maxlength="6" placeholder="••••••" value="">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.6rem; font-size: 0.78rem;">
+          <span style="color: var(--text-muted);">Valid for: <strong id="cardOtpTimerText" style="color: var(--pink-700);">02:59</strong></span>
+          <button type="button" onclick="autoFillCardOtp()" style="background: var(--pink-100); border: 1px dashed var(--pink-400); color: var(--pink-800); font-weight: 700; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; cursor: pointer;">
+            ⚡ Auto-fill (482910)
+          </button>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+        <button type="button" id="card3dsSubmitBtn" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;" onclick="submitCard3dsOtp()">
+          <span id="card3dsSubmitText">Authorize &amp; Pay <span id="card3dsAmountText">₹0</span></span>
+        </button>
+        <button type="button" class="btn-secondary" style="width: 100%; justify-content: center; border-color: transparent; color: var(--text-muted);" onclick="closeCard3dsModal()">
+          <span>Cancel Payment</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Indian NetBanking Authentication Simulation Modal -->
+  <div id="netbankSimulatorModal" class="modal-backdrop">
+    <div class="modal-window" style="max-width: 480px; padding: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid var(--border-light); padding-bottom: 0.9rem; margin-bottom: 1.2rem;">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div id="netbankModalIcon" class="bank-logo-icon hdfc" style="width: 36px; height: 36px; font-size: 0.85rem;">
+            HDFC
+          </div>
+          <div>
+            <h3 id="netbankModalTitle" style="font-size: 1.05rem; margin: 0; color: var(--pink-950);">HDFC Bank NetBanking</h3>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Direct Debit Gateway Authorization</span>
+          </div>
+        </div>
+        <span style="background: #f0fdf4; color: #15803d; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 999px;">
+          ● Bank Online
+        </span>
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.45rem; font-size: 0.82rem;">
+          <span style="color: var(--text-muted);">Merchant:</span>
+          <strong>Her Hampers Boutique (Mumbai)</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.45rem; font-size: 0.82rem;">
+          <span style="color: var(--text-muted);">Customer User ID:</span>
+          <strong style="font-family: monospace;">hh_customer_8492</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.45rem; font-size: 0.82rem;">
+          <span style="color: var(--text-muted);">Account Number:</span>
+          <strong style="font-family: monospace;">•••• •••• •••• 9104 (Savings)</strong>
+        </div>
+        <div style="border-top: 1px dashed #cbd5e1; padding-top: 0.5rem; margin-top: 0.5rem; display: flex; justify-content: space-between; font-size: 0.92rem; font-weight: 800;">
+          <span style="color: var(--pink-950);">Amount to Debit:</span>
+          <span id="netbankModalAmount" style="color: var(--pink-700); font-size: 1.2rem;">₹0</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.2rem;">
+        <label style="display:block; font-size: 0.76rem; font-weight: 700; color: var(--pink-950); margin-bottom: 0.35rem;">
+          Enter Bank NetBanking Transaction Password / MPIN:
+        </label>
+        <input type="password" id="netbankMpinInput" class="host-form-input" placeholder="••••••" maxlength="6" value="482103">
+        <span style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 3px;">
+          ⚡ Pre-filled with demo secure test MPIN (482103)
+        </span>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+        <button type="button" id="netbankConfirmBtn" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;" onclick="confirmNetBankingPayment()">
+          <span id="netbankConfirmText">Approve &amp; Pay Securely</span>
+        </button>
+        <button type="button" class="btn-secondary" style="width: 100%; justify-content: center; border-color: transparent; color: var(--text-muted);" onclick="closeNetBankingModal()">
+          <span>Cancel &amp; Return</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

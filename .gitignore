@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs & Debug
+*.log
+npm-debug.log*
+
+# Scratch & Temporary Screenshots
+test.png
+test_scrolled.png
+scratch/*.png
+scratch/edge-profile/
+scratch/debug_dump.json

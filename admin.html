@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Member Admin Portal | Her Hampers</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <style>
+    /* Admin Specific Styling */
+    .admin-body {
+      background: #fff5f8;
+      min-height: 100vh;
+    }
+
+    .admin-nav {
+      background: white;
+      border-bottom: 2px solid var(--pink-200);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .admin-host-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--pink-100);
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--pink-900);
+      border: 1px solid var(--pink-300);
+    }
+
+    .admin-container {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Stats Cards Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--pink-400), var(--pink-600));
+    }
+
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--pink-50);
+      color: var(--pink-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .stat-info p.label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-info h3.val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--pink-900);
+    }
+
+    /* Admin Tabs Navigation */
+    .admin-tabs {
+      display: flex;
+      gap: 0.8rem;
+      border-bottom: 2px solid var(--pink-200);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+    }
+
+    .admin-tab-btn {
+      background: transparent;
+      padding: 0.8rem 1.6rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-bottom: 3px solid transparent;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .admin-tab-btn:hover {
+      color: var(--pink-600);
+      background: rgba(251, 207, 232, 0.2);
+    }
+
+    .admin-tab-btn.active {
+      color: var(--pink-700);
+      border-bottom-color: var(--pink-600);
+      background: white;
+      box-shadow: 0 -2px 10px rgba(219, 39, 119, 0.05);
+    }
+
+    /* Header Orders Notification Bell */
+    .admin-notif-bell-btn {
+      position: relative;
+      background: var(--pink-100);
+      border: 1.5px solid var(--pink-300);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .admin-notif-bell-btn:hover {
+      background: var(--pink-200);
+      transform: scale(1.06);
+    }
+    .admin-bell-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 5px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(225, 29, 72, 0.4);
+    }
+    .admin-bell-pulse {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 2px solid #f43f5e;
+      animation: bellPulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+      pointer-events: none;
+    }
+    @keyframes bellPulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      70% { transform: scale(1.3); opacity: 0; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    /* Tab Notification Badge */
+    .admin-tab-badge {
+      background: var(--pink-200);
+      color: var(--pink-900);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 12px;
+      margin-left: 0.3rem;
+    }
+    .admin-tab-badge.has-pending {
+      background: #ffe4e6;
+      color: #be123c;
+      border: 1px solid #fecdd3;
+      font-weight: 800;
+    }
+
+    /* Orders Place Notification Alert Banner */
+    .admin-orders-notif-banner {
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fdf2f8 100%);
+      border: 1.5px solid #fecdd3;
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.6rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      box-shadow: 0 4px 18px rgba(244, 63, 94, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .admin-orders-notif-banner::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, #e11d48, #db2777);
+    }
+    .admin-notif-bell-icon {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .bell-ping-ring {
+      position: absolute;
+      inset: -4px;
+      border-radius: 16px;
+      border: 2px solid #fb7185;
+      animation: bellPulse 2.2s infinite;
+    }
+    .admin-notif-info {
+      flex: 1;
+    }
+    .notif-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.25rem;
+    }
+    .notif-title-row h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #881337;
+      margin: 0;
+    }
+    .live-pill {
+      font-size: 0.68rem;
+      font-weight: 800;
+      background: #ffe4e6;
+      color: #be123c;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+      letter-spacing: 0.5px;
+      border: 1px solid #fecdd3;
+    }
+    .admin-notif-info p.notif-desc {
+      font-size: 0.86rem;
+      color: #4c0519;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .admin-notif-badges {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .notif-stat-pill {
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .notif-stat-pill.pending {
+      background: #e11d48;
+      color: white;
+      box-shadow: 0 3px 8px rgba(225, 29, 72, 0.3);
+    }
+    .notif-stat-pill.total {
+      background: white;
+      color: #9f1239;
+      border: 1px solid #fecdd3;
+    }
+
+    /* Admin Table Styling */
+    .table-container {
+      background: white;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+    }
+
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .admin-table th {
+      background: var(--pink-50);
+      padding: 0.85rem 1rem;
+      color: var(--pink-900);
+      font-weight: 700;
+      border-bottom: 2px solid var(--pink-200);
+      white-space: nowrap;
+    }
+
+    .admin-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--pink-100);
+      color: var(--text-primary);
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover td {
+      background: #fffbfd;
+    }
+
+    .table-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      background: var(--pink-50);
+      border: 1px solid var(--border-light);
+    }
+
+    .status-select {
+      background: var(--pink-50);
+      border: 1px solid var(--pink-300);
+      border-radius: var(--radius-full);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--pink-900);
+      cursor: pointer;
+    }
+
+    .action-btn-group {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .btn-action {
+      background: var(--pink-50);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.7rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--pink-800);
+      cursor: pointer;
+    }
+
+    .btn-action:hover {
+      background: var(--pink-600);
+      color: white;
+    }
+
+    .btn-action.delete:hover {
+      background: #ef4444;
+      border-color: #ef4444;
+      color: white;
+    }
+
+    /* Lock Screen for Unauthenticated Visitors */
+    .host-lockout-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #fff0f5 0%, #fce7f3 50%, #ffffff 100%);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .host-lockout-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--pink-200);
+      box-shadow: var(--shadow-lg);
+      max-width: 460px;
+      width: 100%;
+      padding: 2.8rem 2.2rem;
+      text-align: center;
+    }
+
+    /* Admin Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .admin-nav {
+        padding: 0.75rem 0.85rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+      }
+      .admin-nav-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        width: 100%;
+      }
+      .admin-container {
+        padding: 0 0.65rem;
+        margin: 1rem auto;
+        max-width: 100vw;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .admin-orders-notif-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 0.75rem;
+      }
+      .admin-notif-badges {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1.2rem;
+      }
+      .stat-card {
+        padding: 0.85rem 0.75rem;
+        gap: 0.6rem;
+      }
+      .stat-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.15rem;
+      }
+      .stat-info h3.val {
+        font-size: 1.15rem;
+      }
+      .stat-info p.label {
+        font-size: 0.65rem;
+      }
+      .admin-tabs {
+        gap: 0.4rem;
+        padding-bottom: 0.4rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .admin-tab-btn {
+        padding: 0.55rem 0.85rem;
+        font-size: 0.78rem;
+        white-space: nowrap;
+      }
+      .admin-form-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .table-container {
+        padding: 0.85rem 0.65rem;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .table-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+      }
+      .table-toolbar > div {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+      .table-toolbar input,
+      .table-toolbar select {
+        width: 100% !important;
+      }
+      .table-toolbar button {
+        width: 100% !important;
+        justify-content: center;
+      }
+      .admin-table {
+        min-width: 680px;
+      }
+    }
+
+
+    /* Review & App Rating Cards in Admin */
+    .admin-review-card {
+      background: white;
+      border: 1.5px solid var(--pink-200);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(219, 39, 119, 0.04);
+    }
+    .admin-review-card:hover {
+      border-color: var(--pink-400);
+      box-shadow: 0 4px 14px rgba(219, 39, 119, 0.08);
+      transform: translateY(-2px);
+    }
+    .admin-rating-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      color: #be185d;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+    .admin-rating-tag {
+      display: inline-block;
+      background: #fdf4ff;
+      border: 1px solid #f0abfc;
+      color: #a21caf;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      margin-right: 0.3rem;
+      margin-top: 0.3rem;
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .admin-orders-notif-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body class="admin-body">
+
+  <!-- Host Authentication Security Lockout Screen (Visible if NOT authenticated) -->
+  <div id="hostLockoutScreen" class="host-lockout-screen">
+    <div class="host-lockout-box">
+      <div class="brand-logo-emblem" style="width: 80px; height: 80px; margin: 0 auto 1.2rem;">
+        <div class="brand-logo-aura"></div>
+        <img src="assets/images/logo.png" alt="Her Hampers Logo" class="brand-logo-img" style="width: 74px; height: 74px;">
+      </div>
+      <h2 style="font-size: 1.8rem; margin-bottom: 0.4rem; color: var(--pink-950);">Host Portal Gate</h2>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.8rem;">
+        This page is restricted exclusively to the <strong>Her Hampers Host Member</strong>. Enter authenticated store manager credentials to unlock the administrative dashboard.
+      </p>
+
+      <div id="adminPageErrorAlert" class="host-error-alert">
+        Access Denied: Invalid Host Username or Password!
+      </div>
+
+      <form id="adminLockoutForm" onsubmit="handleDirectAdminLogin(event)">
+        <div class="host-form-group">
+          <label for="adminUsername">Host Member ID / Username</label>
+          <input type="text" id="adminUsername" class="host-form-input" required placeholder="Enter Host ID" autocomplete="username">
+        </div>
+
+        <div class="host-form-group">
+          <label for="adminPassword">Host Password</label>
+          <input type="password" id="adminPassword" class="host-form-input" required placeholder="Enter Host Password" autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+          <span>Unlock Admin Dashboard</span>
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="index.html" style="font-size: 0.85rem; color: var(--pink-600); text-decoration: underline;">
+          ← Return to Customer Storefront
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authenticated Host Admin Portal Container -->
+  <div id="hostAdminPortal" style="display: none;">
+    <!-- Top Admin Header -->
+    <header class="admin-nav">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-logo-emblem" style="width: 44px; height: 44px;">
+            <div class="brand-logo-aura"></div>
+            <img src="assets/images/logo.png" alt="Her Hampers Logo" class="brand-logo-img" style="width: 40px; height: 40px;">
+          </div>
+          <div class="brand-text">
+            <h1 style="font-size: 1.35rem;">Her Hampers</h1>
+            <p>Host Administrative Center</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="admin-nav-actions" style="display: flex; align-items: center; gap: 0.8rem;">
+        <!-- Live Orders Notification Bell -->
+        <button class="admin-notif-bell-btn" onclick="switchAdminTab('ordersTab', document.querySelectorAll('.admin-tab-btn')[1])" title="View Customer Orders Notification">
+          <span style="font-size: 1.15rem; line-height: 1;">🔔</span>
+          <span class="admin-bell-badge" id="adminHeaderNotifBadge">0</span>
+          <span class="admin-bell-pulse"></span>
+        </button>
+
+        <div class="admin-host-badge">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3.5L6 20l1.5-6.5L3 9l6-1z"></path></svg>
+          <span>Host Member: <strong id="currentHostUserDisplay">admin</strong></span>
+        </div>
+
+        <a href="index.html" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <span>Storefront View</span>
+        </a>
+
+        <button onclick="handleHostLogout()" class="btn-primary" style="padding: 0.5rem 1.1rem; font-size: 0.85rem; background: linear-gradient(135deg, #ef4444, #b91c1c); display: inline-flex; align-items: center; gap: 0.4rem;">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      <!-- Executive Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg class="icon-svg" style="width: 26px; height: 26px;" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <div class="stat-info">
+            <p class="label">Total Store Revenue</p>
+            <h3 class="val" id="statRevenue">₹0</h3>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg class="icon-svg" style="width: 26px; height: 26px;" viewBox="0 0 24 24"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>
+          </div>
+          <div class="stat-info">
+            <p class="label">Total Orders Placed</p>
+            <h3 class="val" id="statOrdersCount">0</h3>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg class="icon-svg" style="width: 26px; height: 26px;" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="stat-info">
+            <p class="label">Catalog Products</p>
+            <h3 class="val" id="statProductsCount">0</h3>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <svg class="icon-svg" style="width: 26px; height: 26px;" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div class="stat-info">
+            <p class="label">Pending Fulfillment</p>
+            <h3 class="val" id="statPendingCount">0</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" onclick="switchAdminTab('productsTab', this)">
+          <span>Product Catalog & Inventory</span>
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('ordersTab', this)">
+          <span>Customer Orders & Shipping</span>
+          <span class="admin-tab-badge" id="adminOrdersTabBadge">0</span>
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('hampersTab', this)">
+          <span>Custom Hamper Requests</span>
+          <span class="admin-tab-badge" id="adminHampersTabBadge" style="display:none;">0</span>
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('reviewsTab', this)">
+          <span>Customer Reviews & App Ratings</span>
+          <span class="admin-tab-badge" id="adminReviewsTabBadge" style="background: #fbbf24; color: #78350f;">0</span>
+        </button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('settingsTab', this)">
+          <span>Host Settings & Security</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: PRODUCT CATALOG & INVENTORY -->
+      <div id="productsTab" class="admin-tab-content">
+
+        <!-- DEDICATED ON-PAGE PANEL: ADD NEW PRODUCT WITH PRICE -->
+        <div class="admin-add-product-card">
+          <div class="admin-card-header">
+            <h3>
+              <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              <span>Add New Product with Price</span>
+            </h3>
+            <span style="font-size: 0.82rem; color: var(--pink-700); background: var(--pink-100); padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-weight: 700;">
+              Live Storefront Synchronization
+            </span>
+          </div>
+
+          <form id="directAddProductForm" onsubmit="handleDirectAddProduct(event)">
+            <div class="admin-form-grid-3">
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">Product Name *</label>
+                <input type="text" id="quickProdName" class="host-form-input" required placeholder="e.g. Royal Kemp Temple Jimmiki">
+              </div>
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">Category *</label>
+                <select id="quickProdCategory" class="host-form-input" required>
+                  <option value="boys accessories">Boys Accessories (Kaapu & Chains)</option>
+                  <option value="lighting toys">Lighting Toys</option>
+                  <option value="kids">Kids (Bubbles & Cars)</option>
+                  <option value="mehandhi">Mehandhi & Stickers</option>
+                  <option value="keychains">Camera & Keychains</option>
+                  <option value="clips">Clips & Hairpins</option>
+                  <option value="scrunchies">Silk Scrunchies</option>
+                  <option value="chain">Chains & Chokers</option>
+                  <option value="jimmiki">Temple Jimmiki</option>
+                  <option value="cute earrings">Cute Earrings</option>
+                  <option value="kolusu">Silver Kolusu</option>
+                  <option value="evil eye kolusu">Evil Eye Kolusu</option>
+                  <option value="ring for boys">Rings for Boys</option>
+                  <option value="ring for girls">Rings for Girls</option>
+                  <option value="nail polish">Salon Gloss Nail Polish</option>
+                  <option value="glass bangles">Glass Bangles</option>
+                  <option value="raindrop bangles">Raindrop Bangles</option>
+                  <option value="hampers">Pre-made Gift Hampers</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">Badge Tag</label>
+                <input type="text" id="quickProdBadge" class="host-form-input" placeholder="e.g. Bestseller, Trending, New">
+              </div>
+            </div>
+
+            <div class="admin-form-grid-3">
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">Selling Price (₹) *</label>
+                <input type="number" id="quickProdPrice" class="host-form-input admin-price-field" required min="1" placeholder="Amount (e.g. 499)">
+              </div>
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">Original / MRP (₹)</label>
+                <input type="number" id="quickProdOrigPrice" class="host-form-input" placeholder="Compare price (e.g. 799)">
+              </div>
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">Stock Inventory Count *</label>
+                <input type="number" id="quickProdStock" class="host-form-input" required min="0" value="25" placeholder="Units in stock">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1rem; align-items: end;">
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--pink-950);">
+                  Product Photos (Add 1 to 10 Images - Multi-Upload or URLs) *
+                </label>
+                <div class="custom-file-upload-zone" id="quickDropZone" onclick="document.getElementById('quickProdFileInput').click()">
+                  <input type="file" id="quickProdFileInput" accept="image/*" multiple style="display:none;" onchange="handleProductMultiImageUpload(this, 'quick')">
+                  <svg class="icon-svg" style="width: 26px; height: 26px; color: var(--pink-600);" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="12" x2="12" y2="15"></line></svg>
+                  <div style="flex: 1;">
+                    <div style="font-weight: 700; color: var(--pink-950); font-size: 0.86rem;">Click to Upload 1 to 10 Photos From Computer</div>
+                    <div style="font-size: 0.74rem; color: var(--text-muted);" id="quickUploadStatus">Select up to 10 JPG, PNG, or WEBP photos together</div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                  <input type="text" id="quickProdImage" class="host-form-input" placeholder="Or paste image path/URL and click Add" style="flex: 1; padding: 0.42rem 0.75rem; font-size: 0.82rem;">
+                  <button type="button" class="btn-secondary" onclick="addUrlToProductGallery('quickProdImage', 'quick')" style="padding: 0.42rem 0.85rem; font-size: 0.78rem; font-weight: 700; white-space: nowrap;">
+                    + Add URL
+                  </button>
+                </div>
+
+                <!-- 1-10 Photos Gallery Container -->
+                <div id="quickImageGalleryWrap" class="multi-image-gallery-wrap" style="display:none;"></div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.85rem;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+                  <img id="quickImagePreview" src="assets/images/logo.png" alt="Preview" class="img-preview-thumb">
+                  <span style="font-size: 0.68rem; color: var(--text-muted); font-weight: 600;">Preview</span>
+                </div>
+                <button type="submit" class="btn-primary" style="flex: 1; padding: 0.85rem 1.1rem; justify-content: center; font-weight: 700;">
+                  <span>+ Add Product to Store</span>
+                </button>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 0.6rem;">
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">
+                  🎨 Available Colours (comma-separated)
+                </label>
+                <input type="text" id="quickProdColors" class="host-form-input" placeholder="e.g. Red, Rose Pink, Baby Pink, Emerald Green">
+                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; margin-top: 2px;">Leave blank if item has no colour choices</span>
+              </div>
+              <div>
+                <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">
+                  📏 Available Sizes (comma-separated)
+                </label>
+                <input type="text" id="quickProdSizes" class="host-form-input" placeholder="e.g. 2.2, 2.4, 2.6, 2.8">
+                <span style="font-size: 0.7rem; color: var(--text-muted); display: block; margin-top: 2px;">Leave blank if item has no size choices</span>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 0.6rem;">
+              <div>
+                <label style="display:block; font-size: 0.78rem; font-weight: 700; margin-bottom: 0.25rem; color: #991b1b;">
+                  🚫 Out of Stock Colours (optional, comma-separated)
+                </label>
+                <input type="text" id="quickProdOutOfStockColors" class="host-form-input" placeholder="e.g. Red, Sky Blue">
+              </div>
+              <div>
+                <label style="display:block; font-size: 0.78rem; font-weight: 700; margin-bottom: 0.25rem; color: #991b1b;">
+                  🚫 Out of Stock Sizes (optional, comma-separated)
+                </label>
+                <input type="text" id="quickProdOutOfStockSizes" class="host-form-input" placeholder="e.g. 2.2, 2.4">
+              </div>
+            </div>
+
+            <div style="margin-top: 0.6rem;">
+              <label style="display:block; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--pink-950);">Product Description</label>
+              <input type="text" id="quickProdDesc" class="host-form-input" placeholder="Handcrafted luxury boutique piece curated for Her Hampers...">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem; flex-wrap: wrap; gap: 0.5rem; background: var(--pink-50); padding: 0.65rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--pink-200);">
+              <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.84rem; font-weight: 700; color: var(--pink-950); cursor: pointer;">
+                <input type="checkbox" id="quickProdInHamper" checked style="width: 17px; height: 17px; accent-color: var(--pink-600);">
+                <span>Enable in Custom Hamper Builder</span>
+              </label>
+              <span style="font-size: 0.74rem; color: var(--pink-800);">Allows customers to pick this accessory when crafting their 3 to 10 item hamper</span>
+            </div>
+          </form>
+        </div>
+
+        <div class="table-container">
+          <div class="table-toolbar">
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+              <input type="text" id="adminProductSearch" class="host-form-input" style="width: 240px; padding: 0.5rem 1rem;" placeholder="Search inventory...">
+              <select id="adminCategoryFilter" class="sort-select" style="padding: 0.55rem 1rem;">
+                <option value="all">All Categories (18)</option>
+                <option value="boys accessories">Boys Accessories</option>
+                <option value="lighting toys">Lighting Toys</option>
+                <option value="kids">Kids (Bubbles & Cars)</option>
+                <option value="mehandhi">Mehandhi & Stickers</option>
+                <option value="keychains">Camera & Keychains</option>
+                <option value="clips">Clips</option>
+                <option value="scrunchies">Scrunchies</option>
+                <option value="chain">Chains</option>
+                <option value="jimmiki">Jimmiki</option>
+                <option value="cute earrings">Cute Earrings</option>
+                <option value="kolusu">Kolusu</option>
+                <option value="evil eye kolusu">Evil Eye Kolusu</option>
+                <option value="ring for boys">Ring for Boys</option>
+                <option value="ring for girls">Ring for Girls</option>
+                <option value="nail polish">Nail Polish</option>
+                <option value="glass bangles">Glass Bangles</option>
+                <option value="raindrop bangles">Raindrop Bangles</option>
+                <option value="hampers">Pre-made Hampers</option>
+              </select>
+            </div>
+
+            <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+              <span id="serverDiskStatusPill" style="display: none; align-items: center; gap: 6px; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.76rem; font-weight: 700;">
+                <span style="width: 7px; height: 7px; background: #10b981; border-radius: 50%; display: inline-block;"></span>
+                Server Disk Synced
+              </span>
+              <button onclick="exportProductsJSON()" class="btn-action" style="padding: 0.5rem 0.9rem; font-size: 0.78rem; font-weight: 700; background: #fdf2f8; border-color: var(--pink-300); color: var(--pink-900);" title="Download backup of all products as a .json file">
+                💾 Backup Catalog
+              </button>
+              <button onclick="importProductsJSON()" class="btn-action" style="padding: 0.5rem 0.9rem; font-size: 0.78rem; font-weight: 700; background: #f8fafc; border-color: #cbd5e1; color: #334155;" title="Restore catalog from a saved .json file">
+                📥 Import Backup
+              </button>
+              <button onclick="openAddProductModal()" class="btn-secondary" style="padding: 0.6rem 1.4rem; font-size: 0.88rem;">
+                <span>+ Add via Dialog</span>
+              </button>
+            </div>
+          </div>
+
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Item Name</th>
+                <th>Category</th>
+                <th>Price (₹)</th>
+                <th>Original (₹)</th>
+                <th>Stock</th>
+                <th>Badge</th>
+                <th>Hamper Builder</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminProductsTableBody">
+              <!-- Rendered via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 2: CUSTOMER ORDERS & SHIPPING -->
+      <div id="ordersTab" class="admin-tab-content" style="display: none;">
+
+        <!-- Active Orders Place Notification Alert Banner -->
+        <div class="admin-orders-notif-banner" id="adminOrdersNotifBanner">
+          <div class="admin-notif-bell-icon">
+            <span class="bell-emoji">🔔</span>
+            <span class="bell-ping-ring"></span>
+          </div>
+          <div class="admin-notif-info">
+            <div class="notif-title-row">
+              <h4 id="ordersNotifTitle">Customer Orders Notification Center</h4>
+              <span class="live-pill" id="ordersLivePill">● LIVE NOTIFICATION</span>
+            </div>
+            <p id="adminOrdersNotifDesc" class="notif-desc">
+              You have <strong id="notifPendingCountHighlight" style="color: #be185d;">0 pending orders</strong> awaiting packing and boutique fulfillment dispatch.
+            </p>
+          </div>
+          <div class="admin-notif-badges">
+            <span class="notif-stat-pill pending" id="ordersNotifPendingPill">0 Orders To Pack</span>
+            <span class="notif-stat-pill total" id="ordersNotifTotalPill">0 Total Orders</span>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <div class="table-toolbar">
+            <div style="display: flex; gap: 0.8rem; align-items: center;">
+              <input type="text" id="adminOrderSearch" class="host-form-input" style="width: 240px; padding: 0.5rem 1rem;" placeholder="Search order ID or customer...">
+              <select id="adminOrderStatusFilter" class="sort-select">
+                <option value="all">All Statuses</option>
+                <option value="Packed">Packed</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+            <button onclick="exportOrdersJSON()" class="btn-secondary" style="font-size: 0.85rem;">
+              <span>Export Orders (JSON)</span>
+            </button>
+          </div>
+
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer Info</th>
+                <th>Delivery Address</th>
+                <th>Items Ordered</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Date</th>
+                <th>Fulfillment Status</th>
+              </tr>
+            </thead>
+            <tbody id="adminOrdersTableBody">
+              <!-- Rendered via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: CUSTOM HAMPER REQUESTS -->
+      <div id="hampersTab" class="admin-tab-content" style="display: none;">
+        <div class="table-container">
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--pink-900);">Custom Hamper Builder Orders</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Individual bespoke hampers curated by customers with personalized calligraphy notes.
+          </p>
+
+          <div id="customHamperCardsList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: CUSTOMER REVIEWS & APP RATINGS -->
+      <div id="reviewsTab" class="admin-tab-content" style="display: none;">
+        <!-- Overview summary banner -->
+        <div class="reviews-summary-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+          <div class="stat-card" style="border: 2px solid #fbcfe8; background: linear-gradient(135deg, #fff5f8 0%, #fff 100%);">
+            <div class="stat-icon" style="background: #fdf2f8; color: #db2777; font-size: 1.8rem;">
+              ⭐
+            </div>
+            <div class="stat-info">
+              <p class="label">Customer App Rating Score</p>
+              <h3 class="val" id="adminAppRatingScore" style="color: #be185d;">5.0 of 5</h3>
+              <p style="font-size: 0.78rem; color: #9d174d; margin-top: 0.2rem;" id="adminAppRatingsSubtext">Post-checkout rating prompt</p>
+            </div>
+          </div>
+
+          <div class="stat-card" style="border: 2px solid #fed7aa; background: linear-gradient(135deg, #fffaf5 0%, #fff 100%);">
+            <div class="stat-icon" style="background: #fff7ed; color: #ea580c; font-size: 1.8rem;">
+              🛍️
+            </div>
+            <div class="stat-info">
+              <p class="label">Delivered Product Reviews</p>
+              <h3 class="val" id="adminProductReviewsCount" style="color: #c2410c;">0 Reviews</h3>
+              <p style="font-size: 0.78rem; color: #9a3412; margin-top: 0.2rem;">Post-delivery review prompt (__ of 5)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Columns: Left = App Ratings, Right = Product Reviews -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 1.5rem;">
+          <!-- Section 1: Customer App Ratings (Post-Order) -->
+          <div class="table-container" style="margin-bottom: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1.5px solid var(--pink-200); padding-bottom: 0.8rem;">
+              <div>
+                <h3 style="font-size: 1.2rem; margin: 0; color: var(--pink-900); display: flex; align-items: center; gap: 0.5rem;">
+                  <span>📱 Patron App Ratings</span>
+                </h3>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.3rem 0 0 0;">
+                  Customer feedback prompted right after order completion
+                </p>
+              </div>
+              <span id="appRatingsBadgeCount" style="background: var(--pink-100); color: var(--pink-800); font-weight: 700; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 999px;">0 ratings</span>
+            </div>
+
+            <div id="adminAppRatingsList" style="display: flex; flex-direction: column; gap: 0.9rem; max-height: 600px; overflow-y: auto; padding-right: 0.3rem;">
+              <!-- Populated via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Section 2: Delivered Product Reviews -->
+          <div class="table-container" style="margin-bottom: 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1.5px solid var(--pink-200); padding-bottom: 0.8rem;">
+              <div>
+                <h3 style="font-size: 1.2rem; margin: 0; color: var(--pink-900); display: flex; align-items: center; gap: 0.5rem;">
+                  <span>🌸 Delivered Product Reviews</span>
+                </h3>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.3rem 0 0 0;">
+                  Customer ratings & reviews prompted after delivery (__ of 5)
+                </p>
+              </div>
+              <span id="productReviewsBadgeCount" style="background: #fef3c7; color: #92400e; font-weight: 700; font-size: 0.78rem; padding: 0.25rem 0.65rem; border-radius: 999px;">0 reviews</span>
+            </div>
+
+            <div id="adminProductReviewsList" style="display: flex; flex-direction: column; gap: 0.9rem; max-height: 600px; overflow-y: auto; padding-right: 0.3rem;">
+              <!-- Populated via JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: HOST SETTINGS & SECURITY -->
+      <div id="settingsTab" class="admin-tab-content" style="display: none;">
+        <div class="table-container" style="max-width: 650px;">
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--pink-900);">Host Member Credentials</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Update the secret credentials required to open this admin page.
+          </p>
+
+          <form onsubmit="handleUpdateHostCreds(event)">
+            <div class="host-form-group">
+              <label>Host Username / ID</label>
+              <input type="text" id="newHostUsername" class="host-form-input" required>
+            </div>
+            <div class="host-form-group">
+              <label>New Host Password</label>
+              <input type="password" id="newHostPassword" class="host-form-input" required>
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">
+              <span>Save New Host Credentials</span>
+            </button>
+          </form>
+
+          <hr style="border: none; border-top: 1px solid var(--border-light); margin: 2.5rem 0;">
+
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--pink-900);">Reset Catalog to Initial Data</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            Restores all 12+ requested items (Clips, Scrunchies, Chains, Jimmikis, Kolusu, Rings, Bangles) to defaults.
+          </p>
+          <button onclick="handleResetCatalogDefaults()" class="btn-secondary" style="border-color: #f43f5e; color: #f43f5e;">
+            <span>Reset All Products to Factory Default</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Add / Edit Product -->
+  <div id="productEditModal" class="modal-backdrop">
+    <div class="modal-window" style="max-width: 600px; padding: 2rem;">
+      <button onclick="closeProductEditModal()" class="modal-close-btn">&times;</button>
+      <h3 id="productModalTitle" style="font-size: 1.4rem; margin-bottom: 1.2rem; color: var(--pink-900);">Add New Item</h3>
+
+      <form id="productForm" onsubmit="handleSaveProduct(event)">
+        <input type="hidden" id="editProductId">
+
+        <div style="margin-bottom: 0.9rem;">
+          <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Product Name *</label>
+          <input type="text" id="prodNameInput" class="host-form-input" required placeholder="e.g. Traditional Silver Bell Kolusu">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 0.9rem;">
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Category *</label>
+            <select id="prodCategorySelect" class="host-form-input" required>
+              <option value="boys accessories">Boys Accessories (Kaapu & Chains)</option>
+              <option value="lighting toys">Lighting Toys</option>
+              <option value="kids">Kids (Bubbles & Cars)</option>
+              <option value="mehandhi">Mehandhi & Stickers</option>
+              <option value="keychains">Camera & Keychains</option>
+              <option value="clips">Clips & Hairpins</option>
+              <option value="scrunchies">Silk Scrunchies</option>
+              <option value="chain">Chains & Chokers</option>
+              <option value="jimmiki">Temple Jimmiki</option>
+              <option value="cute earrings">Cute Earrings</option>
+              <option value="kolusu">Silver Kolusu</option>
+              <option value="evil eye kolusu">Evil Eye Kolusu</option>
+              <option value="ring for boys">Rings for Boys</option>
+              <option value="ring for girls">Rings for Girls</option>
+              <option value="nail polish">Salon Gloss Nail Polish</option>
+              <option value="glass bangles">Glass Bangles</option>
+              <option value="raindrop bangles">Raindrop Bangles</option>
+              <option value="hampers">Pre-made Gift Hampers</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Badge Tag</label>
+            <input type="text" id="prodBadgeInput" class="host-form-input" placeholder="e.g. Bestseller, Trending">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; margin-bottom: 0.9rem;">
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Price (₹) *</label>
+            <input type="number" id="prodPriceInput" class="host-form-input" required min="1" placeholder="499">
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Original Price (₹)</label>
+            <input type="number" id="prodOrigPriceInput" class="host-form-input" placeholder="799">
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Stock Count *</label>
+            <input type="number" id="prodStockInput" class="host-form-input" required min="0" placeholder="25">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.1rem;">
+          <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.4rem;">
+            Product Photos (1 to 10 Images - Multi-Upload or URLs) *
+          </label>
+          <div class="custom-file-upload-zone" id="editDropZone" onclick="document.getElementById('editProdFileInput').click()">
+            <input type="file" id="editProdFileInput" accept="image/*" multiple style="display:none;" onchange="handleProductMultiImageUpload(this, 'edit')">
+            <svg class="icon-svg" style="width: 24px; height: 24px; color: var(--pink-600);" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="12" x2="12" y2="15"></line></svg>
+            <div style="flex: 1;">
+              <div style="font-weight: 700; color: var(--pink-950); font-size: 0.84rem;">Click to Upload 1 to 10 Photos From Computer</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);" id="editUploadStatus">Choose 1 to 10 JPG, PNG, WEBP photos together</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem;">
+            <input type="text" id="prodImageInput" class="host-form-input" placeholder="Or paste image path/URL and click Add" style="flex: 1; padding: 0.42rem 0.75rem; font-size: 0.82rem;">
+            <button type="button" class="btn-secondary" onclick="addUrlToProductGallery('prodImageInput', 'edit')" style="padding: 0.42rem 0.85rem; font-size: 0.78rem; font-weight: 700; white-space: nowrap;">
+              + Add URL
+            </button>
+          </div>
+
+          <!-- 1-10 Photos Gallery Container -->
+          <div id="editImageGalleryWrap" class="multi-image-gallery-wrap" style="display:none;"></div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 0.9rem;">
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">
+              🎨 Available Colours (comma-separated)
+            </label>
+            <input type="text" id="prodColorsInput" class="host-form-input" placeholder="e.g. Red, Rose Pink, Gold, Emerald Green">
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">
+              📏 Available Sizes (comma-separated)
+            </label>
+            <input type="text" id="prodSizesInput" class="host-form-input" placeholder="e.g. 2.2, 2.4, 2.6, 2.8">
+          </div>
+        </div>
+
+        <!-- Out of Stock / Strikethrough Variant Controls -->
+        <div style="background: #fff5f5; border: 1.5px solid #fecaca; border-radius: 8px; padding: 0.75rem 0.9rem; margin-bottom: 0.9rem;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: #991b1b; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+            <span>🚫 Mark Colours or Sizes as Out of Stock (Striked Out)</span>
+            <span style="font-size: 0.72rem; font-weight: 600; color: #b91c1c;">Click badges below to toggle</span>
+          </div>
+
+          <!-- Interactive Clickable Chips -->
+          <div id="modalVariantStockToggles" style="margin-bottom: 0.6rem;"></div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+            <div>
+              <label style="display:block; font-size: 0.75rem; font-weight: 600; color: #7f1d1d; margin-bottom: 0.25rem;">
+                Striked-Out Colours (comma-separated):
+              </label>
+              <input type="text" id="prodOutOfStockColorsInput" class="host-form-input" style="background: #fff; font-size: 0.82rem;" placeholder="e.g. Red, Sky Blue">
+            </div>
+            <div>
+              <label style="display:block; font-size: 0.75rem; font-weight: 600; color: #7f1d1d; margin-bottom: 0.25rem;">
+                Striked-Out Sizes (comma-separated):
+              </label>
+              <input type="text" id="prodOutOfStockSizesInput" class="host-form-input" style="background: #fff; font-size: 0.82rem;" placeholder="e.g. 2.2, 2.4">
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display:block; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.3rem;">Description</label>
+          <textarea id="prodDescInput" class="host-form-input" style="min-height: 70px; resize: vertical;" placeholder="Handcrafted luxury accessory..."></textarea>
+        </div>
+
+        <div style="margin-bottom: 1.4rem; background: var(--pink-50); padding: 0.65rem 0.9rem; border-radius: var(--radius-sm); border: 1px solid var(--pink-200);">
+          <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.84rem; font-weight: 700; color: var(--pink-950); cursor: pointer;">
+            <input type="checkbox" id="prodInHamperInput" checked style="width: 17px; height: 17px; accent-color: var(--pink-600);">
+            <span>Available in Custom Hamper Builder (3 to 10 item curation)</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span>Save Item to Catalog</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Host Tax Invoice & Packing Slip Modal -->
+  <div id="adminInvoiceModal" class="modal-backdrop">
+    <div class="modal-window invoice-modal-window">
+      <div class="invoice-actions-bar">
+        <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; color: var(--pink-900);">
+          <svg class="icon-svg sm" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          <span>Host Member - Tax Invoice & Parcel Packing Slip</span>
+        </div>
+        <div style="display: flex; gap: 0.6rem; align-items: center;">
+          <button class="btn-primary" onclick="window.print()" style="padding: 0.45rem 1.1rem; font-size: 0.82rem;">
+            <svg class="icon-svg sm" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Print Invoice</span>
+          </button>
+          <button class="modal-close-btn" style="position: static; width: 32px; height: 32px;" onclick="closeAdminInvoiceModal()">&times;</button>
+        </div>
+      </div>
+      <div id="adminInvoicePrintableArea" class="invoice-sheet">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Customer Uploaded Reference Photo Viewer -->
+  <div id="adminPhotoModal" class="modal-backdrop" onclick="if(event.target===this)closeAdminPhotoModal()">
+    <div class="modal-window" style="max-width: 650px; padding: 1.5rem; text-align: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.8rem;">
+        <h3 id="adminPhotoModalTitle" style="font-size: 1.15rem; color: var(--pink-900); margin: 0;">
+          📸 Customer Uploaded Reference Photo
+        </h3>
+        <button onclick="closeAdminPhotoModal()" class="modal-close-btn" style="position: static;">&times;</button>
+      </div>
+      <div style="background: #111; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; min-height: 280px; max-height: 500px; overflow: hidden;">
+        <img id="adminPhotoModalImg" src="" alt="Customer Photo" style="max-width: 100%; max-height: 480px; object-fit: contain; border-radius: 8px;">
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;">
+        <span id="adminPhotoModalDesc" style="font-size: 0.82rem; color: var(--text-secondary); text-align: left;"></span>
+        <a id="adminPhotoDownloadBtn" href="" download="customer_custom_photo.jpg" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.82rem; text-decoration: none;">
+          ⬇ Download Photo
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
